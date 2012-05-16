@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{4e4caba0-e881-470b-979e-35b2dcaf522f}" Title="ApexLumia" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="ApexLumia author" Description="Sample description" Publisher="ApexLumia">
+  <App xmlns="" BitsPerPixel="32" ProductID="{4e4caba0-e881-470b-979e-35b2dcaf522f}" Title="ApexLumia" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="ApexLumia author" Description="Sample description" Publisher="ApexLumia">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
