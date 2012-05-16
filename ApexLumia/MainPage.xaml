@@ -1,0 +1,102 @@
+﻿<phone:PhoneApplicationPage xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps.Overlays;assembly=Microsoft.Phone.Controls.Maps"  
+    x:Class="ApexLumia.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728" 
+    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}" SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False" Foreground="#FF0F0F0F">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="White">
+ 
+        <!--Panorama control-->
+        <controls:Panorama ItemsSource="{Binding}" Foreground="#11001F34" >
+            <controls:Panorama.Title>
+                <StackPanel Orientation="Vertical" Margin="80,-30,0,-20">
+                    <TextBlock Text="apex lumia" />
+                </StackPanel>
+            </controls:Panorama.Title>
+            <controls:Panorama.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0" SpreadMethod="Repeat">
+                    <!--<GradientStop Color="#FF001F34" Offset="0" />
+                    <GradientStop Color="#FF01101A" Offset="1" />-->
+                    <GradientStop Color="#FFFFFFFF" Offset="0" />
+                    <GradientStop Color="#FFFEFEFE" Offset="1" />
+                </LinearGradientBrush>
+            </controls:Panorama.Background>
+            
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="flight" Foreground="#FF0F0F0F" >
+                <!--Double line list with text wrapping-->
+                
+               
+            </controls:PanoramaItem>
+ 
+            <!--Panorama item two-->
+            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+            <controls:PanoramaItem Header="second" Foreground="#FF0F0F0F">
+                <!--Double line list with image placeholder and text wrapping-->
+                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Items}" Foreground="#FF0F0F0F">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
+                                <!--Replace rectangle with image-->
+                                
+                                <StackPanel Width="311">
+                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0F0F0F" />
+                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#990F0F0F" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PanoramaItem>
+
+         
+            
+            <!--Panorama item three-->
+            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+            <controls:PanoramaItem Header="third" Foreground="#FF0F0F0F">
+                <!--Double line list with image placeholder and text wrapping-->
+                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Items}" Foreground="#FF0F0F0F">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
+                                <!--Replace rectangle with image-->
+                                
+                                <StackPanel Width="311">
+                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="#FF0F0F0F" />
+                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#990F0F0F" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PanoramaItem>
+
+        </controls:Panorama>
+        
+       <Image Source="/ApexLumia;component/littlelogo.png" HorizontalAlignment="Left" Width="216" Margin="-15,-20,0,0" VerticalAlignment="Top" /> 
+        
+    </Grid>
+
+    
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Minimized" Opacity="1" BackgroundColor="#FF001F34">
+
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="flight docs"  />
+                <shell:ApplicationBarMenuItem Text="settings"  />
+            </shell:ApplicationBar.MenuItems>
+
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>
