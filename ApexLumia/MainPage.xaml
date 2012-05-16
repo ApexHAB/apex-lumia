@@ -11,7 +11,7 @@
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}" SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="False">
+    shell:SystemTray.IsVisible="False" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:my1="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
@@ -34,27 +34,36 @@
             <!--Panorama item one-->
             <controls:PanoramaItem Header="flight status">
                 <!--Double line list with text wrapping-->
-
+            
+                <Grid>
+                    <Button Content="Start Flight" Height="72" HorizontalAlignment="Right" Margin="0,437,126,0" Name="button1" VerticalAlignment="Top" Width="177" />
+                    <my1:Map Height="109" HorizontalAlignment="Left" Margin="14,13,0,0" Name="map1" VerticalAlignment="Top" Width="390" />
+                    <TextBlock HorizontalAlignment="Left" Margin="9,351,0,136" Name="textBlock1" Text="Updating Habitat..." Width="219" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="9,378,0,0" Name="textBlock2" Text="Updating Twitter..." VerticalAlignment="Top" Width="219" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="10,322,0,0" Name="textBlock3" Text="Taking photos..." VerticalAlignment="Top" Width="219" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="14,130,0,0" Name="textBlock4" Text="Time" VerticalAlignment="Top" Width="52" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="13,156,0,0" Name="textBlock5" Text="Co-ordinates" VerticalAlignment="Top" Width="119" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="184,130,0,0" Name="textBlock6" Text="Battery Level" VerticalAlignment="Top" Width="119" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="14,207,0,0" Name="textBlock7" Text="Sats" VerticalAlignment="Top" Width="46" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="106,207,0,0" Name="textBlock8" Text="Speed" VerticalAlignment="Top" Width="56" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="230,206,0,0" Name="textBlock9" Text="Heading" VerticalAlignment="Top" Width="73" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="13,254,0,0" Name="textBlock10" Text="Altitude" VerticalAlignment="Top" Width="73" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="10,296,0,0" Name="textBlock11" Text="Transmitting..." VerticalAlignment="Top" Width="219" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="9,406,0,0" Name="textBlock12" Text="Logging data..." VerticalAlignment="Top" Width="219" />
+                </Grid>
+                
             </controls:PanoramaItem>
  
             <!--Panorama item two-->
             <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
-            <controls:PanoramaItem Header="second">
+            <controls:PanoramaItem Header="do stuff...">
                 <!--Double line list with image placeholder and text wrapping-->
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Items}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                                <!--Replace rectangle with image-->
-                                
-                                <StackPanel Width="311">
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
-                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}" />
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <HyperlinkButton Content="Flight Docs" />
+                    <HyperlinkButton Content="Data" />
+                    <HyperlinkButton Content="Photos / Videos" />
+                    <HyperlinkButton Content="Settings" />
+                </StackPanel>
             </controls:PanoramaItem>
 
          
