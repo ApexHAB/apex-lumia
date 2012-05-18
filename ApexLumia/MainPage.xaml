@@ -7,11 +7,11 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728" 
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}" SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="False" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:my1="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps">
+    FontSize="{StaticResource PhoneFontSizeNormal}" SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:my1="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps" Foreground="White">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
@@ -30,53 +30,114 @@
 
                 </LinearGradientBrush>
             </controls:Panorama.Background>
-            
+
+            <controls:PanoramaItem Header="main menu">
+                <!--Double line list with image placeholder and text wrapping-->
+                <StackPanel Margin="14,0,0,0">
+                    <TextBlock Name="textBlock13" Text="flight docs" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light" />
+                    <TextBlock Name="textBlock14" Text="media" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
+                    <TextBlock Name="textBlock15" Text="data" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
+                    <TextBlock Name="textBlock16" Text="settings" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
+                    <toolkit:ToggleSwitch Header="flight running" Height="111" Name="toggleSwitch1" Width="410" Margin="0,100,0,0"/>
+                </StackPanel>
+            </controls:PanoramaItem>
+
             <!--Panorama item one-->
             <controls:PanoramaItem Header="flight status">
                 <!--Double line list with text wrapping-->
             
                 <Grid>
-                    <Button Content="Start Flight" Height="72" HorizontalAlignment="Right" Margin="0,437,126,0" Name="button1" VerticalAlignment="Top" Width="177" />
-                    <my1:Map Height="109" HorizontalAlignment="Left" Margin="14,13,0,0" Name="map1" VerticalAlignment="Top" Width="390" />
-                    <TextBlock HorizontalAlignment="Left" Margin="9,351,0,136" Name="textBlock1" Text="Updating Habitat..." Width="219" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="9,378,0,0" Name="textBlock2" Text="Updating Twitter..." VerticalAlignment="Top" Width="219" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="10,322,0,0" Name="textBlock3" Text="Taking photos..." VerticalAlignment="Top" Width="219" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="14,130,0,0" Name="textBlock4" Text="Time" VerticalAlignment="Top" Width="52" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="13,156,0,0" Name="textBlock5" Text="Co-ordinates" VerticalAlignment="Top" Width="119" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="184,130,0,0" Name="textBlock6" Text="Battery Level" VerticalAlignment="Top" Width="119" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="14,207,0,0" Name="textBlock7" Text="Sats" VerticalAlignment="Top" Width="46" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="106,207,0,0" Name="textBlock8" Text="Speed" VerticalAlignment="Top" Width="56" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="230,206,0,0" Name="textBlock9" Text="Heading" VerticalAlignment="Top" Width="73" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="13,254,0,0" Name="textBlock10" Text="Altitude" VerticalAlignment="Top" Width="73" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="10,296,0,0" Name="textBlock11" Text="Transmitting..." VerticalAlignment="Top" Width="219" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="9,406,0,0" Name="textBlock12" Text="Logging data..." VerticalAlignment="Top" Width="219" />
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Text="Count" Grid.Row="0" Grid.Column="0" FontFamily="Segoe WP Semibold" />
+                    <TextBlock Text="{Binding dataCount}" Grid.Row="0" Grid.Column="1"/>
+
+                    <TextBlock Text="Time" Grid.Row="1" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataTime}" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Text="Battery" Grid.Row="1" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataBattery}" Grid.Row="1" Grid.Column="3"/>
+                    
+                    <TextBlock Text="Latitude" Grid.Row="2" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataLat}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="Longitude" Grid.Row="2" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataLong}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    
+                    <TextBlock Text="Altitude" Grid.Row="4" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataAltitude}" Grid.Row="4" Grid.Column="1"/>
+                    <TextBlock Text="Heading" Grid.Row="4" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataHeading}" Grid.Row="4" Grid.Column="3"/>
+                    <TextBlock Text="Satellites" Grid.Row="5" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataGPSSats}" Grid.Row="5" Grid.Column="1"/>
+                    <TextBlock Text="Speed" Grid.Row="5" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding dataSpeed}" Grid.Row="5" Grid.Column="3"/>
+                    
+                    <TextBlock Text="Status" Grid.Row="7" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding flightStatus}" Grid.Row="7" Grid.Column="1"/>
+
+                    <TextBlock Text="Transmitting..."  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusTransmit}" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Data connection..." Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusDataConnection}" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Updating Habitat..." Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusHabitat}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Updating Twitter..." Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusTwitter}" Grid.Row="12" Grid.Column="3" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Logging data..." Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusLogger}" Grid.Row="13" Grid.Column="3" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Taking photos..." Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusCamera}" Grid.Row="14" Grid.Column="3" HorizontalAlignment="Right"/>
                 </Grid>
                 
             </controls:PanoramaItem>
- 
-            <!--Panorama item two-->
-            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
-            <controls:PanoramaItem Header="do stuff...">
+
+            <controls:PanoramaItem Header="map">
                 <!--Double line list with image placeholder and text wrapping-->
-                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <HyperlinkButton Content="Flight Docs" />
-                    <HyperlinkButton Content="Data" />
-                    <HyperlinkButton Content="Photos / Videos" />
-                    <HyperlinkButton Content="Settings" />
+                <StackPanel >
+                    <my1:Map  Name="map1" VerticalAlignment="Top" Height="434" Width="394" />
                 </StackPanel>
             </controls:PanoramaItem>
+
+            <!--Panorama item two-->
+            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+            
 
          
             
             <!--Panorama item three-->
             <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+            <!--
             <controls:PanoramaItem Header="third">
-                <!--Double line list with image placeholder and text wrapping-->
+                               
                 <ListBox Margin="0,-30,-12,0" ItemsSource="{Binding Items}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                                <!--Replace rectangle with image-->
+                                
                                 
                                 <StackPanel Width="311">
                                     <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
@@ -86,7 +147,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </controls:PanoramaItem>
+            </controls:PanoramaItem>-->
 
         </controls:Panorama>
         <Grid.Background>
@@ -95,9 +156,22 @@
                 <GradientStop Color="#FF01101A" Offset="1" />
             </LinearGradientBrush>
         </Grid.Background>
+        
+        
+        
     </Grid>
 
-    
-    
- 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" BackgroundColor="White" ForegroundColor="#FF01101A" Mode="Minimized">
+            <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar.transport.play.rest.png" Text="Start Flight"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.stop.rest.png" Text="Stop Flight" IsEnabled="False" />-->
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="reset packet count"/>
+                <shell:ApplicationBarMenuItem Text="refresh GPS"/>
+                <shell:ApplicationBarMenuItem Text="about"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+
 </phone:PhoneApplicationPage>

@@ -1,0 +1,40 @@
+//2 ARG
+
+str lr, [sp, #-4]! (E52DE004)
+ldr r1, [pc, #0x18] (E59F1018)
+ldr r0, [pc, #0x10] (E59F0010)
+ldr r3, [pc, #8] (E59F3008)
+mov lr, pc (E1A0E00F)
+mov pc, r3 (E1A0F003)
+ldr pc, [sp], #4 (E49DF004)
+DCD? (15469548) (15469548) // Func addr
+DCD? (45156584) (45156584) // Func arg 1
+DCD? (68457548) (68457548) // Func arg 2
+ldr r0, [pc] (E59F0000)
+mov pc, lr (return) (E1A0F00E)
+
+
+//1 ARG
+
+str lr, [sp, #-4]! (E52DE004)
+ldr r0, [pc, #0x10] (E59F0010)
+ldr r3, [pc, #8] (E59F3008)
+mov lr, pc (E1A0E00F)
+mov pc, r3 (E1A0F003)
+ldr pc, [sp], #4 (E49DF004)
+DCD? (15469548) (15469548)
+DCD? (45156584) (45156584)
+ldr r0, [pc] (E59F0000)
+mov pc, lr (return) (E1A0F00E)
+
+
+//0 ARG
+
+str lr, [sp, #-4]! (E52DE004)
+ldr r3, [pc, #8] (E59F3008)
+mov lr, pc (E1A0E00F)
+mov pc, r3 (E1A0F003)
+ldr pc, [sp], #4 (E49DF004)
+DCD? (15469548) (15469548)
+ldr r0, [pc] (E59F0000)
+mov pc, lr (return) (E1A0F00E)

@@ -1,0 +1,38 @@
+// DllImportMango.idl : IDL source for DllImportMango
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DllImportMango.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(A980817D-1DFC-4307-A069-A725E544F79C),
+	dual,
+	nonextensible,
+	helpstring("IMangoClass Interface"),
+	pointer_default(unique)
+]
+interface IMangoClass : IUnknown {//IDispatch{
+};
+[
+	uuid(6DABA5A9-E93A-446B-8927-1288605791D1),
+	version(1.0),
+	helpstring("DllImportMango 1.0 Type Library")
+]
+library DllImportMangoLib
+{
+	importlib("stdole2.tlb");
+	interface IDocHostUIHandlerDispatch;
+	interface IAxWinAmbientDispatchEx;
+	[
+		uuid(434B816A-3ADA-4386-8421-33B0E669F3F1),
+		helpstring("MangoClass Class")
+	]
+	coclass MangoClass
+	{
+		[default] interface IMangoClass;
+	};
+};

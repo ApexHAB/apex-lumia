@@ -1,0 +1,276 @@
+﻿
+//var taip = Assembly.LoadFrom(@"\Applications\Install\8DC5214E-88FA-4C2D-A379-2CD74FE24B72\Install\mscorlib_v2.0.50727.dll");//Type.GetType("mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089");
+
+
+//var internaL = BindingFlags.NonPublic | BindingFlags.Instance;//System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static;
+////internal static object CreateInstance(Type type, bool nonPublic);
+
+//var taip = typeof(Activator);
+//var meth = taip.GetMethods(internaL);
+//var _2 = meth[2];
+
+//var taa = _2.Invoke(null, new object[] { typeof(Delegate) , true});
+//System.Runtime.InteropServices.Marshal.GetDelegateForFunctionPointer();
+//var ta = typeof();
+
+//var d = typeof(Delegate);
+//var ctorInternal = d.GetConstructors(internaL)[0]; // private void .ctor()
+
+//var rep = d.GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { }, null);//.Invoke(new object[] { false });
+
+//var obj = ctorInternal.Invoke(new object[0]);
+
+//var constA = d.GetMethod("InternalConstructor", internaL);
+////DllImportCaller.ptrToDelegate(IntPtr.Zero);
+//unsafe
+//{
+//    char* _out;
+//    int t;
+//    DllImportCaller.lib.MessageBox7("", "", MB.MB_OK, out t);
+//    //DllImportCaller.lib.SayHi(out _out);
+//}
+
+//Interop.Init();
+//var t = Activator.CreateInstance(d);
+
+//var t = ctorInternal.Invoke(new object[0]);
+//System.Diagnostics.Debug.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
+
+//Interop.Init();
+//int res;
+//inter.NopRndCall();
+//DllImportCaller.lib.MessageBox7("Native Messabe box :)", "Native caption", MB.MB_OKCANCEL, out res);
+
+
+
+//inter.NopRndCall();
+//DllImportCaller.lib.MessageBox7("Native Messabe box :)", "Native caption", MB.MB_OKCANCEL, out res);
+
+//var a = Type.GetType("System.PInvoke.TableData, mscorlib, Version=3.7.0.0, Culture=neutral, PublicKeyToken=969db8053d3322ac");
+//var m = a.GetMethods(BindingFlags.Static | BindingFlags.Public)[1];
+//var da = m.Invoke(null, new object[] { 0 });
+//int res;
+//uint lastErr;
+//var t2 = DllImportCaller.lib.CreateProcess7(out res);//.GetLastError7(out lastErr);
+
+//var ta = DllImportCaller.lib.GetLastError7(out lastErr);
+//NCALL a;
+//var t = DllImportCaller.NativeMethodExists("FlightModeUXDll", "GetWirelessState");
+//DllImportCaller.Call<string>("XnaFrameworkCore.dll", "Media_Queue_Resume", ref a);
+//var code = DllImportCaller.lib.MediaResume();
+//ChangeWirelessState
+
+//var a = DllImportCaller.lib.Clipboard_SET("Hello");
+
+//string arrr;
+//var l = DllImportCaller.lib.Clipboard_GET(out arrr);
+//Phone.Clipboard.Value = "Hello";
+//Phone.Zune.Pause();
+//var t = Phone.Clipboard.Value;
+//var o = DllImportCaller.NativeMethodExists("PlatformInterop", "Vibrate");
+
+//var t = Phone.Vibrator.Vibrate();
+
+//var c = Phone.Vibrator.Stop();
+
+//var unl = DllImportCaller.NativeMethodExists("toolhelp", "CreateToolhelp32Snapshot");
+//var proc = Phone.TaskManager.GetProcessAt(0);
+
+//Type t = Type.GetType("Microsoft.Phone.TaskModel.Interop.HostInfo, Microsoft.Phone.Interop, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e");
+//var ctor = t.GetConstructor(new Type[0]);
+//var ta = Activator.CreateInstance(t);
+
+//var t = Type.GetType("Microsoft.Xna.Framework.Graphics.UnsafeNativeMethods+Imaging, Microsoft.Phone.Interop, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e");
+//var m = t.GetMethod("DecodeStreamToTexture");
+
+
+//System.Threading.Thread s = new System.Threading.Thread(new System.Threading.ParameterizedThreadStart((par) =>
+//{
+//    while (true)
+//    {
+//        for (int i = 0; i <= short.MaxValue; i++)
+//        {
+//            int j = i;
+//            //var aa = DllImportCaller.lib.GetAsyncKeyState7(i);
+//            var key = Phone.KeyboardHook.IsKeyDown((int)Phone.KeyboardHook.PhysicalKeys.Search);//DllImportCaller.lib.GetAsyncKeyState7(i);
+//            //var a = DllImportCaller.lib.GetAsyncKeyState7(124); 
+//            //var key = DllImportCaller.lib.GetAsyncKeyState7(i); ;
+//            if (key)//-32767)
+//            {
+//                //MessageBox.Show(i.ToString());
+//                //keys (i,test);
+//                //if (key != 124)
+//                //{
+
+//                //}
+//            }
+//        }
+//    }
+
+//}));
+
+//s.Start(s);
+
+
+//var t= DllImportCaller.NativeMethodExists("coredll", "GetProcessTimes");
+//var t = DateTime.MinValue;
+//MessageBox.Show(Phone.Network.GetWirlessState.ToString());
+
+//Denied... : System.PInvoke.Process.[public static extern int Execute(string FileName, string Arguments, bool hInherit, uint creationFlags, string workingDirectory, uint Flags, out IntPtr hProcess, out int procId);]
+
+//NavigateToExternalPage @ frame.dll > Microsoft.Phone.Shell.Interop.ShellPageManagerNativeMethods
+
+//var io = DllImportCaller.lib.NavigateToExternalPage7((IntPtr)15654, "app://5B04B775-356B-4AA0-AAF8-6491FFEA5631/Default", false, 0);
+
+//return;
+
+// var info = DllImportCaller.lib.ShutdownOS(EWX.EWX_SHUTDOWN);
+//var t = DllImportCaller.NativeMethodExists("coredll", "CeCreateProcessEx");
+//var ia = DllImportCaller.lib.CeCreateProcessEx();
+//var o = DllImportCaller.lib.GetLastError7();
+
+//Win32ErrorCode code = (Win32ErrorCode)o;
+//var t = DllImportCaller.NativeMethodExists("ZTrace", "ZPurchaseQueueGetJobsCount");
+//var a = DllImportCaller.NativeMethodExists("ZMF_Client", "ZPurchaseQueueGetJobsCount");
+
+//var val = DllImportCaller.lib.VoidCall("ZMF_Client", "ZMktGetCreditCards");
+
+
+//var r = DllImportCaller.NativeMethodExists("urlmon", "ShowTrustAlertDialo");
+//var t = DllImportCaller.NativeMethodExists("agcore", "NavigateToSafeURI");
+
+//NavigateToSafeURI(string location, string target, bool checkUserInitiatedAction) // MANAGED
+
+
+//[DllImport("agcore", EntryPoint="NavigateToSafeURI", CharSet=CharSet.Unicode)] //NATIVE
+//private static extern uint NavigateToSafeURINative(IntPtr context, [MarshalAs(UnmanagedType.LPWStr)] string location, [MarshalAs(UnmanagedType.LPWStr)] string target, uint checkUserInitiatedAction);
+
+var app = Application.Current;
+var ta = this;
+//var t = DllImportCaller.NativeMethodExists("simsecurity", "NavigateToDestination");
+//var t = DllImportCaller.NativeMethodExists("shspeechux", "SpeechUXUpdateExample");
+//var tas = DllImportCaller.lib.VoidCall("shcore", "IsShellReady");
+
+//var ok = Phone.IO.DirectoryExists("\\");
+//var oks = Phone.IO.PathIsValidFileName("hello.lol");
+//var k = Phone.IO.PathIsValidPath("\\Halol\\");
+//var file = Phone.IO.CreateDirectoryPath("hhaaas");//System.IO.Directory. Combine("\\", "Steven_Was_Here"));
+//var ka = Phone.IO.CreateDirectoryPath("\\StevenWasHere_XDA");
+//var tw = DllImportCaller.lib.StringCall("shcore", "DirectoryExists", "\\vvc\\s");
+//var ta = DllImportCaller.lib.StringCall("agcore", "NavigateToSafeURI", "5B04B775-356B-4AA0-AAF8-6491FFEA5603");
+//var val = DllImportCaller.lib.VoidCall("agcore", "GetIsNetworkAvailable");
+//var val = DllImportCaller.lib.StringCall("ThemeManager", "ThemeGetColorProperty", "CurrentTheme");
+//var val = DllImportCaller.lib.VoidCall("shspeechux", "SpeechUXUpdateExample");
+
+//var va = Phone.Network.WLan.WlanDisconnect();
+//var win32 = (Win32ErrorCode)va;
+//var taaa = DllImportCaller.NativeMethodExists("ndis", "NdisGetSystemUpTime");
+//var taa = Phone.OS.Uptime;
+//var id = Phone.WP7Process.CoGetCurrentProcess();
+
+
+//var p = Phone.WP7Process.GetCurrentProcess();
+//var handle =DllImportCaller.lib.fopen7("", "");
+//var err = DllImportCaller.lib.GetLastError7();
+//var ea = (Win32ErrorCode)err;
+////var f = Phone.IO.File7.Open("\\Windows\\0000_System.Windows.xaml", "r");
+
+////int c;
+////List<int> va = new List<int>();
+////do
+////{
+////    c = f.Getc();
+
+////    va.Add(c);
+
+////} while (c != Phone.IO.File7.EOF);
+
+////var data = va.Select(a => (char)a).ToArray();
+////string r = new string(data);
+
+////f.Close();
+/ var ina = DllImportCaller.lib.Tests();
+//var d = Phone.TaskManager.Named("udevice");
+//for (int i = 0; i < d.Length; i++)
+//{
+//    MessageBox.Show(d[i].Kill(0).ToString());
+//}
+//d = Phone.TaskManager.Named("udevice");
+
+//var d = Phone.IO.File7.ReadAllBytes("\\Windows\\OnmDefaultNotebookFolder.ini");
+//var s = d.Select(c => (char)c);
+//var f = new string(s.ToArray());
+
+//var a = Phone.IO.File7.Open("\\Windows\\Application Data", "r");
+//var si = a.GetFileSize();
+
+//var d = Phone.IO.Directory7.OpenDirectory("\\Windows\\Application Data").First();
+//var t = d.GetDirectories();
+
+//Microsoft.Phone.Shell.PhoneApplicationService.Current.UserIdleDetectionMode = Microsoft.Phone.Shell.PhoneApplicationService.Current.ApplicationIdleDetectionMode = Microsoft.Phone.Shell.IdleDetectionMode.Disabled;
+
+////var d = DllImportCaller.lib.VoidCall("PolicyXml", "PolicyXmlClear");
+//new System.Threading.Timer(new System.Threading.TimerCallback((m) =>
+//{
+//    var t = DllImportCaller.lib.VoidCall("aygshell", "SHIsLocked");
+//    if (t != 0)
+//    {
+
+//    }
+//}), null, 0, 10);
+////writeTest(d);
+
+//try
+//{
+//    var t = Phone.IO.Directory.OpenDirectory("\\Windows");//.LaunchBuiltInApplication(Phone.AppLauncher.Apps.Internet7, "_default?StartURL=www.google.com");
+//    var f = t.GetFiles();
+//    var g = t.GetDirectories();
+//}
+//catch (Exception ex)
+//{
+
+//}
+
+//var t = Phone.IO.File7.ReadAllString("\\Windows\\SoundTuning.lnk");
+
+
+// var t = Phone.AppLauncher.OpenWebsite("http://google.com");
+//var t = Phone.AppLauncher.OpenPicture("http://forum.xda-developers.com/customavatars/avatar3037309_2.gif");
+
+//var t = Phone.AppLauncher.LaunchBuiltInApplication(Phone.AppLauncher.Apps.SendEmail);//, "ShareContent?MailTo=fiinix00@gmai.com");
+//var t = DllImportCaller.lib.StringCall("emclient", "SetAppIsolatedStorePath", "\\Wndows");
+//var t = Console7.Title;
+
+//Console7.Title = "lolololol";
+
+//var f = Console7.Title;
+
+//Phone.TaskHost.PreventDehydrating(false);
+
+//System.Threading.Timer t = new System.Threading.Timer((l) =>
+//{
+//    System.Diagnostics.Debug.WriteLine("still alive lol: " + k++);
+//}, null, 500, 500);
+
+//Phone.TaskManager.DumpEnumWindowsToConsole();
+
+//var wnds = Phone.TaskManager.GetEnumWindows(false);
+//foreach (var item in wnds)
+//{
+//    Phone.TaskManager.TaskSwitch_SwitchTo(item.HWND);  
+//}
+//Phone.OS.Display.DISPLAY_DEVICE d = new Phone.OS.Display.DISPLAY_DEVICE();
+//for (uint i = 0; i < 10; i++)
+//{
+//    var t = Phone.OS.Display.GetDisplay(i, 0, ref d);
+//}
+
+//
+//DesktopExplorerWindow
+
+//var t = Phone.Search.SearchFor("Hello?");
+
+//var t = DllImportCaller.lib.IntDualCall("IAFapi", "RegisterSearchablePage", 10,10);// Phone.Search();//.BindSearchButtonToPage("MainPage.xaml");
+//var t = DllImportCaller.lib.StringCall("IAFapi", "SetOnlineQuery","asd");
+            
+ 

@@ -1,0 +1,26 @@
+HKCR
+{
+	DllImportMango.MangoClass.1 = s 'MangoClass Class'
+	{
+		CLSID = s '{434B816A-3ADA-4386-8421-33B0E669F3F1}'
+	}
+	DllImportMango.MangoClass = s 'MangoClass Class'
+	{
+		CLSID = s '{434B816A-3ADA-4386-8421-33B0E669F3F1}'
+		CurVer = s 'DllImportMango.MangoClass.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {434B816A-3ADA-4386-8421-33B0E669F3F1} = s 'MangoClass Class'
+		{
+			ProgID = s 'DllImportMango.MangoClass.1'
+			VersionIndependentProgID = s 'DllImportMango.MangoClass'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Free'
+			}
+			'TypeLib' = s '{6DABA5A9-E93A-446B-8927-1288605791D1}'
+		}
+	}
+}

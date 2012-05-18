@@ -1,0 +1,28 @@
+http://pinvoke.net/default.aspx/user32/SwitchToThisWindow.html (task switch)
+http://pinvoke.net/default.aspx/user32/SetWindowText.html
+http://pinvoke.net/default.aspx/user32/AllowSetForegroundWindow.html
+http://pinvoke.net/default.aspx/ole32/CoGetCurrentProcess.html
+http://pinvoke.net/default.aspx/kernel32/GetProcessHandleCount.html
+BthGetHardwareStatus @ cmlistener.dll
+GetWirelessState @ FMQuickAccess.dll
+GetAdaptersInfo @ WiFiUXSplashDLL.dll -> http://msdn.microsoft.com/en-us/library/aa365917(v=vs.85).aspx
+
+
+http://www.withinwindows.com/2011/03/25/tombstoning-dehydration-and-windows-phone-oh-my/ : HRESULT SHSetAutoDehydratingHostEligibility(BOOL fEligible); : aygshell!SHSetAutoDehydratingHostEligibilit
+
+http://msdn.microsoft.com/en-us/library/aa645738(v=vs.71).aspx
+
+http://stackoverflow.com/questions/1268314/findwindow-with-partial-window-title-windows-c
+
+http://stackoverflow.com/questions/213480/bring-a-console-window-to-front-in-c
+
+http://www.daniweb.com/software-development/cpp/threads/273265 : get title of all windows c++
+char title[MAX_PATH];
+GetWindowText(GetForegroundWindow(), title, GetWindowTextLength(GetForegroundWindow()) + 1);
+
+
+http://www.rohitab.com/discuss/topic/24107-cgetting-window-title/
+
+http://stackoverflow.com/questions/3374433/i-want-to-call-a-c-delegate-from-c-unmanaged-code-a-parameterless-delegate-wo
+
+http://stackoverflow.com/questions/188299/marshal-c-struct-array-into-c

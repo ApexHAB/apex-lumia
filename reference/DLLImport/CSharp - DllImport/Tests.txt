@@ -1,0 +1,15 @@
+﻿Loaded += (o, e2) => //FAILED (FieldAccessException)
+{
+    //NavigationService.
+    //_shellPageManager (typeof ShellPageManager).
+    //m_ShellPageManagerHandle (typeof ShellPageManagerHandle) : (base SafeHandle)
+    var nt = NavigationService.GetType();
+    var _shellPageManager = nt.GetProperty("_shellPageManager", BindingFlags.Instance | BindingFlags.NonPublic);
+    object /* typeof(ShellPageManager) */ _shellPageManagerValue = _shellPageManager.GetValue(_shellPageManager, null);
+
+    var page = _shellPageManagerValue.GetType();
+    var m_ShellPageManagerHandle = page.GetProperty("m_ShellPageManagerHandle", BindingFlags.Instance | BindingFlags.NonPublic);
+    object m_ShellPageManagerHandleValue = m_ShellPageManagerHandle.GetValue(_shellPageManagerValue, null);
+
+    System.Runtime.InteropServices.SafeHandle handle = (System.Runtime.InteropServices.SafeHandle)m_ShellPageManagerHandleValue;
+};

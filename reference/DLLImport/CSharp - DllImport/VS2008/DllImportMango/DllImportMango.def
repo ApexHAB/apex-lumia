@@ -1,0 +1,9 @@
+; DllImportMango.def : Declares the module parameters.
+
+LIBRARY      "DllImportMango.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

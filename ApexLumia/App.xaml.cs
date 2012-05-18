@@ -81,6 +81,8 @@ namespace ApexLumia
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            //Allow app to continue running under the lock screen
+            PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -92,6 +94,9 @@ namespace ApexLumia
             {
                 App.ViewModel.LoadData();
             }
+
+            //Allow app to continue running under the lock screen
+            PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -145,6 +150,8 @@ namespace ApexLumia
 
             // Handle navigation failures
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;
+
+
 
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;

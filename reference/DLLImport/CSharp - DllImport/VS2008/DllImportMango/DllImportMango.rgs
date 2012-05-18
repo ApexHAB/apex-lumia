@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'DllImportMango'
+		'DllImportMango.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}
