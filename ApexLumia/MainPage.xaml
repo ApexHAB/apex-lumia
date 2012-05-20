@@ -8,9 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728" 
-    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}" SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
+    FontSize="{StaticResource PhoneFontSizeNormal}" SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:my1="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps" Foreground="White">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -34,10 +33,10 @@
             <controls:PanoramaItem Header="main menu">
                 <!--Double line list with image placeholder and text wrapping-->
                 <StackPanel Margin="14,0,0,0">
-                    <TextBlock Name="textBlock13" Text="flight docs" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light" />
-                    <TextBlock Name="textBlock14" Text="media" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
-                    <TextBlock Name="textBlock15" Text="data" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
-                    <TextBlock Name="textBlock16" Text="settings" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
+                    <HyperlinkButton Name="mnuFlightDocs" Content="flight docs" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"  />
+                    <HyperlinkButton Name="mnuMedia" Content="media" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
+                    <HyperlinkButton Name="mnuData" Content="data" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
+                    <HyperlinkButton Name="mnuSettings" Content="settings" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light" NavigateUri="/SettingsPage.xaml" />
                     <toolkit:ToggleSwitch Header="flight running" Height="111" Name="toggleSwitch1" Width="410" Margin="0,100,0,0"/>
                 </StackPanel>
             </controls:PanoramaItem>

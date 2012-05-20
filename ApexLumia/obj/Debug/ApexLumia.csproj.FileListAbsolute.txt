@@ -21,7 +21,6 @@ C:\Users\Daniel\Documents\Apex\ApexLumia\ApexLumia\Bin\Debug\Microsoft.Phone.Con
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\App.g.i.cs
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\MainPage.g.i.cs
-C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\Page1.g.i.cs
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\ApexLumia.g.resources
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\ApexLumia.dll
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\ApexLumia.pdb
@@ -38,3 +37,4 @@ C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\Bin\Debug\Microsoft.Phone.Co
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\Bin\Debug\Microsoft.Phone.Controls.Toolkit.pdb
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\Bin\Debug\Microsoft.Phone.Controls.Toolkit.xml
 C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\XapCacheFile.xml
+C:\Users\Daniel\Documents\Apex\apex-lumia\ApexLumia\obj\Debug\SettingsPage.g.i.cs

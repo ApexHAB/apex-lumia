@@ -8,6 +8,19 @@ namespace ApexLumia
 {
     public class Settings
     {
+        IsolatedStorageSettings settings;
+
+        public Settings()
+        {
+            settings = IsolatedStorageSettings.ApplicationSettings;
+        }
+
+        public string settingProjectName
+        {
+            get { return (string)settings["ProjectName"]; }
+        }
 
     }
+
+
 }

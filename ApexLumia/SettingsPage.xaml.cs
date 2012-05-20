@@ -13,25 +13,11 @@ using Microsoft.Phone.Controls;
 
 namespace ApexLumia
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class SettingsPage : PhoneApplicationPage
     {
-
-        public string dataCount { get; set; }
-
-        // Constructor
-        public MainPage()
+        public SettingsPage()
         {
             InitializeComponent();
-
-            // Set context for binded controls to this class.
-            DataContext = this;
-            dataCount = "0000";
-            
         }
-
-
     }
-
-
-
 }
