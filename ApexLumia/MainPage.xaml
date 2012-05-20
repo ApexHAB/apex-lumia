@@ -167,6 +167,7 @@
             <shell:ApplicationBarIconButton IconUri="/Images/appbar.stop.rest.png" Text="Stop Flight" IsEnabled="False" />-->
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="reset packet count"/>
+                <shell:ApplicationBarMenuItem Text="reset spacenear.us"/>
                 <shell:ApplicationBarMenuItem Text="refresh GPS"/>
                 <shell:ApplicationBarMenuItem Text="about"/>
             </shell:ApplicationBar.MenuItems>
