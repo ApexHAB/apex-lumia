@@ -18,6 +18,12 @@ namespace ApexLumia
         public SettingsPage()
         {
             InitializeComponent();
+
+            Settings settings = new Settings();
+            DataContext = settings;
         }
+
+        
+
     }
 }
