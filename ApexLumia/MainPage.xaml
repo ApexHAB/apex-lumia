@@ -19,7 +19,7 @@
         <controls:Panorama ItemsSource="{Binding}" >
             <controls:Panorama.Title>
                 <StackPanel Orientation="Vertical" Margin="-29,50,0,0">
-                    <Image x:Name="icon" Source="logo.png" HorizontalAlignment="left" Height="180" Width="300"/>
+                    <Image x:Name="icon" Source="Images\logo.png" HorizontalAlignment="left" Height="180" Width="300"/>
                 </StackPanel>
             </controls:Panorama.Title>
             <controls:Panorama.Background>

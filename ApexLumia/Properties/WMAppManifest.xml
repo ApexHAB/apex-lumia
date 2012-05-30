@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" BitsPerPixel="32" ProductID="{4e4caba0-e881-470b-979e-35b2dcaf522f}" Title="ApexLumia" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="ApexLumia author" Description="Sample description" Publisher="ApexLumia">
-    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+  <App xmlns="" BitsPerPixel="32" ProductID="{4e4caba0-e881-470b-979e-35b2dcaf522f}" Title="Apex Lumia" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Daniel Saul" Description="High Altitude Balloon Payload" Publisher="ApexLumia">
+    <IconPath IsRelative="true" IsResource="false">Images\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
@@ -24,7 +24,7 @@
     <Tokens>
       <PrimaryToken TokenID="ApexLumiaToken" TaskName="_default">
         <TemplateType5>
-          <BackgroundImageURI IsRelative="true" IsResource="false">StartTile.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Images\StartTile.png</BackgroundImageURI>
           <Count>0</Count>
           <Title>Apex Lumia</Title>
         </TemplateType5>

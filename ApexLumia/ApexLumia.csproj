@@ -99,27 +99,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ApplicationIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="StartTile.png" />
-    <Resource Include="Background.png" />
-    <Resource Include="logo.png" />
-    <Resource Include="logo_blue.png" />
-    <Content Include="Images\appbar.check.rest.png" />
-    <Content Include="Images\appbar.close.rest.png" />
-    <Content Include="Images\appbar.delete.rest.png" />
-    <Content Include="Images\appbar.edit.rest.png" />
-    <Content Include="Images\appbar.favs.addto.rest.png" />
-    <Content Include="Images\appbar.favs.rest.png" />
-    <Content Include="Images\appbar.feature.settings.rest.png" />
-    <Content Include="Images\appbar.stop.rest.png" />
-    <Content Include="Images\appbar.transport.play.rest.png" />
-    <Resource Include="logo_blue_project.png" />
-    <Resource Include="littlelogo.png" />
+    <Resource Include="Images\appbaricons\appbar.check.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.close.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.delete.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.edit.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.favs.addto.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.favs.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.feature.settings.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.stop.rest.png" />
+    <Resource Include="Images\appbaricons\appbar.transport.play.rest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ApplicationIcon.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\StartTile.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
