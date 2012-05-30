@@ -16,10 +16,10 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps.Overlays;assembly=Microsoft.Phone.Controls.Maps">
-
+<!--
     <phone:PhoneApplicationPage.Resources>
-        <local:Settings x:Key="Settings"></local:Settings>
-    </phone:PhoneApplicationPage.Resources>
+        <local:Settings x:Key="settingsList"></local:Settings>
+    </phone:PhoneApplicationPage.Resources>-->
 
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -28,11 +28,11 @@
         <controls:Pivot Title="SETTINGS">
             
             <controls:PivotItem Header="general">
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding settingsGeneral}">
+                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding settingsList}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,17" Width="432" Height="78">
-                                <TextBlock Text="project name" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                                 <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                             </StackPanel>
                         </DataTemplate>

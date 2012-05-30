@@ -9,25 +9,29 @@ namespace ApexLumia
 {
     public class Settings
     {
-        IsolatedStorageSettings settings;
+        //IsolatedStorageSettings settings;
 
         public Settings()
         {
-            settings = IsolatedStorageSettings.ApplicationSettings;
-            this.settingsGeneral = new ObservableCollection<Settings>();
+            //settings = IsolatedStorageSettings.ApplicationSettings;
+            this.settingsList = new ObservableCollection<SettingsList>();
+            LoadSettings();
         }
 
-        public ObservableCollection<Settings> settingsGeneral { get; private set; }
-
-        public string settingProjectName
-        {
-            get { return (string)settings["ProjectName"]; }
-        }
+        public ObservableCollection<SettingsList> settingsList { get; private set; }
 
         public void LoadSettings()
         {
-            this.settingsGeneral.Add();
+            this.settingsList.Add(new SettingsList() { settingName = "project name" });
         }
+
+    }
+
+    public class SettingsList
+    {
+
+        public string settingName { get; set; }
+
 
     }
 
