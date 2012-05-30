@@ -37,7 +37,7 @@
     							</VisualStateGroup>
     						</VisualStateManager.VisualStateGroups>
     						<Border Background="{TemplateBinding Background}" Margin="{StaticResource PhoneHorizontalMargin}" Padding="{TemplateBinding Padding}">
-    							<TextBlock x:Name="TextElement" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+    							<TextBlock x:Name="TextElement" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Style="{TemplateBinding Style}"/>
     						</Border>
     					</Border>
     				</ControlTemplate>

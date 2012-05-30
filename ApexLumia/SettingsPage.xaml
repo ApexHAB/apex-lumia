@@ -5,9 +5,11 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:compMod="clr-namespace:System.ComponentModel;assembly=System.Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    
     
     xmlns:local="clr-namespace:ApexLumia"
     
@@ -16,24 +18,20 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps.Overlays;assembly=Microsoft.Phone.Controls.Maps">
-<!--
-    <phone:PhoneApplicationPage.Resources>
-        <local:Settings x:Key="settingsList"></local:Settings>
-    </phone:PhoneApplicationPage.Resources>-->
-
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
         <!--Pivot Control-->
         <controls:Pivot Title="SETTINGS">
             
             <controls:PivotItem Header="general">
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding settingsList}">
+                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding settingsGeneral}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,17" Width="432" Height="78">
+                                
                                 <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Text="{Binding settingValue}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -41,7 +39,16 @@
             </controls:PivotItem>
 
             <controls:PivotItem Header="rtty">
-                <Grid/>
+                <ListBox  Margin="0,0,-12,0" ItemsSource="{Binding settingsRTTY}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,17" Width="432" Height="78">
+                                <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Text="{Binding settingValue}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </controls:PivotItem>
 
             <controls:PivotItem Header="habitat">
@@ -61,6 +68,13 @@
             </controls:PivotItem>
 
         </controls:Pivot>
+        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad" ColorInterpolationMode="ScRgbLinearInterpolation">
+                <GradientStop Color="#FF001F34" Offset="0" />
+                <GradientStop Color="#FF01101A" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
     </Grid>
 
     <!--Sample code showing usage of ApplicationBar-->

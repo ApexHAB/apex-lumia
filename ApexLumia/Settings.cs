@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Net;
 using System.IO.IsolatedStorage;
 using System.Diagnostics;
@@ -9,31 +10,29 @@ namespace ApexLumia
 {
     public class Settings
     {
-        //IsolatedStorageSettings settings;
+        //IsolatedStorageSettings storagesettings;
 
         public Settings()
         {
             //settings = IsolatedStorageSettings.ApplicationSettings;
-            this.settingsList = new ObservableCollection<SettingsList>();
-            LoadSettings();
+            this.settingsGeneral = new ObservableCollection<SettingsItems>();
+            this.settingsRTTY = new ObservableCollection<SettingsItems>();
+
+            LoadAllSettings();
         }
 
-        public ObservableCollection<SettingsList> settingsList { get; private set; }
+        public ObservableCollection<SettingsItems> settingsGeneral { get; private set; }
+        public ObservableCollection<SettingsItems> settingsRTTY { get; private set; }
 
-        public void LoadSettings()
+        public void LoadAllSettings()
         {
-            this.settingsList.Add(new SettingsList() { settingName = "project name" });
+            settingsGeneral.Add(new SettingsItems("generalProjectName","project name", "ApexHAB","text"));
+            settingsRTTY.Add(new SettingsItems("another","a setting to do with RTTY", "value of the setting","bam"));
         }
 
     }
 
-    public class SettingsList
-    {
 
-        public string settingName { get; set; }
-
-
-    }
 
 
 }
