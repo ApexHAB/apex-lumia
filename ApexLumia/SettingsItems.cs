@@ -11,11 +11,11 @@ namespace ApexLumia
     {
         private string _settingID;
         private string _settingName;
-        private string _settingValue;
+        private object _settingValue;
 
         public int IndexOf(string _settingID);
 
-        public SettingsItems(string id, string name, string value)
+        public SettingsItems(string id, string name, object value)
         {
             this._settingID = id;
             this._settingName = name;
@@ -32,7 +32,7 @@ namespace ApexLumia
             get { return _settingName; }
         }
 
-        public string settingValue
+        public object settingValue
         {
             get { return _settingValue; }
             set { _settingValue = value; }
