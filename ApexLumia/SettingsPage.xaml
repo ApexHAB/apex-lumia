@@ -25,17 +25,12 @@
         <controls:Pivot Title="SETTINGS">
             
             <controls:PivotItem Header="general">
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding settingsGeneral}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,0,0,17" Width="432" Height="78">
-                                
-                                <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                <TextBlock Text="{Binding settingValue}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <StackPanel>
+                    <StackPanel Margin="0,0,-12,17" Width="432" Height="78" DataContext="{Binding settingsGeneral[0]}">
+                        <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                        <TextBlock Text="{Binding settingValue}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                    </StackPanel>
+                </StackPanel>                                
             </controls:PivotItem>
 
             <controls:PivotItem Header="rtty">

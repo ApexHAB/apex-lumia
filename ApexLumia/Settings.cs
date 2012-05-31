@@ -26,8 +26,10 @@ namespace ApexLumia
 
         public void LoadAllSettings()
         {
-            settingsGeneral.Add(new SettingsItems("generalProjectName","project name", "ApexHAB","text"));
-            settingsRTTY.Add(new SettingsItems("another","a setting to do with RTTY", "value of the setting","bam"));
+            settingsGeneral.Add(new SettingsItems("generalProjectName", "project name", "ApexHAB")); // 0 I WANT THIS ONE TO BE STRING
+            settingsGeneral.Add(new SettingsItems("generalRadioTransmit", "radio transmission", true)); // 1 I WANT THIS ONE TO BE BOOLEAN
+
+            settingsRTTY.Add(new SettingsItems("another","a setting to do with RTTY", "value of the setting"));
         }
 
     }

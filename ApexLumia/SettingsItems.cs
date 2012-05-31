@@ -12,14 +12,14 @@ namespace ApexLumia
         private string _settingID;
         private string _settingName;
         private string _settingValue;
-        private string _settingType;
 
-        public SettingsItems(string id, string name, string value, string type)
+        public int IndexOf(string _settingID);
+
+        public SettingsItems(string id, string name, string value)
         {
             this._settingID = id;
             this._settingName = name;
             this._settingValue = value;
-            this._settingType = type;
         }
 
         public string settingID
@@ -36,12 +36,6 @@ namespace ApexLumia
         {
             get { return _settingValue; }
             set { _settingValue = value; }
-        }
-
-
-        public string settingType
-        {
-            get { return _settingType; }
         }
 
     }
