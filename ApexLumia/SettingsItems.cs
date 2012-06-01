@@ -13,8 +13,6 @@ namespace ApexLumia
         private string _settingName;
         private object _settingValue;
 
-        public int IndexOf(string _settingID);
-
         public SettingsItems(string id, string name, object value)
         {
             this._settingID = id;
