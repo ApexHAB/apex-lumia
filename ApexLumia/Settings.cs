@@ -35,12 +35,33 @@ namespace ApexLumia
         public void LoadAllSettings()
         {
             settingsGeneral.Add(new SettingsItems("generalProjectName", "project name", "ApexHAB")); // 0
+
             settingsRTTY.Add(new SettingsItems("generalRTTYToggle", "rtty transmission", true)); // 0
+
             settingsHabitat.Add(new SettingsItems("generalHabitatToggle", "habitat upload", true)); // 0
+
             settingsLogging.Add(new SettingsItems("generalDataLogToggle", "data logger", true)); // 0
+
             settingsCamera.Add(new SettingsItems("generalCameraToggle", "camera", true)); // 0
+
             settingsTwitter.Add(new SettingsItems("generalTwitterToggle", "twitter update", true)); // 0
 
+        }
+
+        public void SetDefaultSettings()
+        {
+            // General Settings
+            for (int i = 0; i <= settingsGeneral.Count; i++) { settingsGeneral[i].setDefault(); }
+            // RTTY Settings
+            for (int i = 0; i <= settingsRTTY.Count; i++) { settingsRTTY[i].setDefault(); }
+            // Habitat Settings
+            for (int i = 0; i <= settingsHabitat.Count; i++) { settingsHabitat[i].setDefault(); }
+            // Logging Settings
+            for (int i = 0; i <= settingsLogging.Count; i++) { settingsLogging[i].setDefault(); }
+            // Camera Settings
+            for (int i = 0; i <= settingsCamera.Count; i++) { settingsCamera[i].setDefault(); }
+            // Twitter Settings
+            for (int i = 0; i <= settingsTwitter.Count; i++) { settingsTwitter[i].setDefault(); }
         }
 
     }

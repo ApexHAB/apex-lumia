@@ -16,13 +16,22 @@ namespace ApexLumia
 {
     public partial class SettingsPage : PhoneApplicationPage
     {
+
+        Settings settings;
+
         public SettingsPage()
         {
             InitializeComponent();
 
-            Settings settings = new Settings();
+            settings = new Settings();
             DataContext = settings;
 
+        }
+
+        private void btnRestoreDefaults_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            settings.SetDefaultSettings();
+            MessageBox.Show("Default Settings Restored.");
         }
 
     }

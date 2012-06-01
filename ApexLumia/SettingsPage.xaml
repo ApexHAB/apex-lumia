@@ -29,11 +29,11 @@
                     <StackPanel>
                         <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsGeneral[0]}">
                             <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
-                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding Path=settingName, Mode=TwoWay}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                             <TextBox Height="71" Name="tbProjectName" Text="{Binding settingValue}" Width="460" />
                         </StackPanel>
                         <StackPanel Margin="0,0,0,17" >
-                            <Button Content="Restore Default Settings" Height="71" Name="button1" Width="460" />
+                            <Button Content="Restore Default Settings" Height="71" Name="btnRestoreDefaults" Width="460" Tap="btnRestoreDefaults_Tap" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>                                
@@ -43,7 +43,7 @@
                 <ScrollViewer>
                     <StackPanel>
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsRTTY[0]}">
-                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch1" Width="456" IsChecked="{Binding settingValue}" />
+                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch1" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -53,7 +53,7 @@
                 <ScrollViewer>
                     <StackPanel>
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsHabitat[0]}">
-                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch2" Width="456" IsChecked="{Binding settingValue}" />
+                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch2" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -63,7 +63,7 @@
                 <ScrollViewer>
                     <StackPanel>
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsCamera[0]}">
-                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch3" Width="456" IsChecked="{Binding settingValue}" />
+                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch3" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -73,7 +73,7 @@
                 <ScrollViewer>
                     <StackPanel>
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsTwitter[0]}">
-                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch4" Width="456" IsChecked="{Binding settingValue}" />
+                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch4" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -83,7 +83,7 @@
                 <ScrollViewer>
                     <StackPanel>
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsLogging[0]}">
-                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch5" Width="456" IsChecked="{Binding settingValue}" />
+                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch5" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
