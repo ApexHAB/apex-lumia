@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Windows;
+using System.ComponentModel;
 using System.IO.IsolatedStorage;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace ApexLumia
 {
-    public class SettingsItems
+    public class SettingsItems : INotifyPropertyChanged
     {
 
         IsolatedStorageSettings savedSettings;
@@ -53,7 +54,7 @@ namespace ApexLumia
 
         public void setDefault()
         {
-            _settingValue = _settingDefaultValue;
+            settingValue = _settingDefaultValue;
             Save();
         }
 
@@ -70,8 +71,27 @@ namespace ApexLumia
         public object settingValue
         {
             get { return _settingValue; }
-            set { _settingValue = value; Save();}
+            set
+            {
+                _settingValue = value;
+                Save();
+                OnPropertyChanged("settingValue");
+            }
         }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
 
     }
 }

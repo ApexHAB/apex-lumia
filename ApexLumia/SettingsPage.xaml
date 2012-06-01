@@ -29,8 +29,8 @@
                     <StackPanel>
                         <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsGeneral[0]}">
                             <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
-                            <TextBlock Text="{Binding Path=settingName, Mode=TwoWay}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBox Height="71" Name="tbProjectName" Text="{Binding settingValue}" Width="460" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Name="tbProjectName" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
                         </StackPanel>
                         <StackPanel Margin="0,0,0,17" >
                             <Button Content="Restore Default Settings" Height="71" Name="btnRestoreDefaults" Width="460" Tap="btnRestoreDefaults_Tap" />

@@ -51,18 +51,20 @@ namespace ApexLumia
         public void SetDefaultSettings()
         {
             // General Settings
-            for (int i = 0; i <= settingsGeneral.Count; i++) { settingsGeneral[i].setDefault(); }
+            for (int i = 0; i <= settingsGeneral.Count-1; i++) { settingsGeneral[i].setDefault(); }
             // RTTY Settings
-            for (int i = 0; i <= settingsRTTY.Count; i++) { settingsRTTY[i].setDefault(); }
+            for (int i = 0; i <= settingsRTTY.Count-1; i++) { settingsRTTY[i].setDefault(); }
             // Habitat Settings
-            for (int i = 0; i <= settingsHabitat.Count; i++) { settingsHabitat[i].setDefault(); }
+            for (int i = 0; i <= settingsHabitat.Count-1; i++) { settingsHabitat[i].setDefault(); }
             // Logging Settings
-            for (int i = 0; i <= settingsLogging.Count; i++) { settingsLogging[i].setDefault(); }
+            for (int i = 0; i <= settingsLogging.Count-1; i++) { settingsLogging[i].setDefault(); }
             // Camera Settings
-            for (int i = 0; i <= settingsCamera.Count; i++) { settingsCamera[i].setDefault(); }
+            for (int i = 0; i <= settingsCamera.Count-1; i++) { settingsCamera[i].setDefault(); }
             // Twitter Settings
-            for (int i = 0; i <= settingsTwitter.Count; i++) { settingsTwitter[i].setDefault(); }
+            for (int i = 0; i <= settingsTwitter.Count-1; i++) { settingsTwitter[i].setDefault(); }
         }
+
+
 
     }
 
