@@ -10,11 +10,20 @@ namespace ApexLumia
 {
     public class Settings
     {
-        //IsolatedStorageSettings storagesettings;
 
+        public ObservableCollection<SettingsItems> settingsGeneral { get; private set; }
+        public ObservableCollection<SettingsItems> settingsRTTY { get; private set; }
+        public ObservableCollection<SettingsItems> settingsHabitat { get; private set; }
+        public ObservableCollection<SettingsItems> settingsCamera { get; private set; }
+        public ObservableCollection<SettingsItems> settingsTwitter { get; private set; }
+        public ObservableCollection<SettingsItems> settingsLogging { get; private set; }
+
+        /// <summary>
+        /// Constructor: Make collections for each category of settings and then loads settings into them.
+        /// </summary>
         public Settings()
         {
-            //settings = IsolatedStorageSettings.ApplicationSettings;
+            
             this.settingsGeneral = new ObservableCollection<SettingsItems>();
             this.settingsRTTY = new ObservableCollection<SettingsItems>();
             this.settingsHabitat = new ObservableCollection<SettingsItems>();
@@ -25,13 +34,10 @@ namespace ApexLumia
             LoadAllSettings();
         }
 
-        public ObservableCollection<SettingsItems> settingsGeneral { get; private set; }
-        public ObservableCollection<SettingsItems> settingsRTTY { get; private set; }
-        public ObservableCollection<SettingsItems> settingsHabitat { get; private set; }
-        public ObservableCollection<SettingsItems> settingsCamera { get; private set; }
-        public ObservableCollection<SettingsItems> settingsTwitter { get; private set; }
-        public ObservableCollection<SettingsItems> settingsLogging { get; private set; }
 
+        /// <summary>
+        /// Adds SettingsItems objects for each individual setting to their corresponding collection.
+        /// </summary>
         public void LoadAllSettings()
         {
             settingsGeneral.Add(new SettingsItems("generalProjectName", "project name", "ApexHAB")); // 0
@@ -50,6 +56,9 @@ namespace ApexLumia
 
         }
 
+        /// <summary>
+        /// Loops through all the settings in each collection, setting them to their default (defined when each SettingsItems object was created)
+        /// </summary>
         public void SetDefaultSettings()
         {
             // General Settings

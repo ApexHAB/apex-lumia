@@ -19,6 +19,12 @@ namespace ApexLumia
         private object _settingValue;
         private object _settingDefaultValue;
 
+        /// <summary>
+        /// Constructor: Grabs saved settings from Isolated Storage and loads the value of this new setting.
+        /// </summary>
+        /// <param name="id">Used as the key for saving the setting value in IsolatedStorage.</param>
+        /// <param name="name">Readable name for display on the settings page</param>
+        /// <param name="defaultvalue">The default value for the setting.</param>
         public SettingsItems(string id, string name, object defaultvalue)
         {
             savedSettings = IsolatedStorageSettings.ApplicationSettings;
@@ -30,6 +36,9 @@ namespace ApexLumia
             Load();
         }
 
+        /// <summary>
+        /// Gets the saved value from IsolatedStorage, or, if not available, sets the default value.
+        /// </summary>
         public void Load()
         {
             if (savedSettings.Contains(_settingID)){
@@ -39,6 +48,9 @@ namespace ApexLumia
             }
         }
 
+        /// <summary>
+        /// Save the current value to IsolatedStorage, or if it doesn't exist yet, add it and save it.
+        /// </summary>
         public void Save()
         {
             if (savedSettings.Contains(_settingID))
@@ -52,6 +64,9 @@ namespace ApexLumia
             savedSettings.Save();
         }
 
+        /// <summary>
+        /// Set the current value to the default and save to IsolatedStorage.
+        /// </summary>
         public void setDefault()
         {
             settingValue = _settingDefaultValue;
@@ -68,6 +83,7 @@ namespace ApexLumia
             get { return _settingName; }
         }
 
+
         public object settingValue
         {
             get { return _settingValue; }
@@ -75,7 +91,7 @@ namespace ApexLumia
             {
                 _settingValue = value;
                 Save();
-                OnPropertyChanged("settingValue");
+                OnPropertyChanged("settingValue");  // When the value changes, it will update the binded control on the settings page immediately.
             }
         }
 

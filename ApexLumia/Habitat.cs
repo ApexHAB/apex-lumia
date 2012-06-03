@@ -15,5 +15,13 @@ namespace ApexLumia
     public class Habitat
     {
 
+        private Boolean _status;
+        public Boolean status { get { return _status; } }
+
+
+        public Habitat(){
+
+        }
+
     }
 }
