@@ -36,9 +36,11 @@ namespace ApexLumia
         {
             settingsGeneral.Add(new SettingsItems("generalProjectName", "project name", "ApexHAB")); // 0
 
-            settingsRTTY.Add(new SettingsItems("generalRTTYToggle", "rtty transmission", true)); // 0
+            settingsRTTY.Add(new SettingsItems("rttyRTTYToggle", "rtty transmission", true)); // 0
 
-            settingsHabitat.Add(new SettingsItems("generalHabitatToggle", "habitat upload", true)); // 0
+            settingsHabitat.Add(new SettingsItems("habitatHabitatToggle", "habitat upload", true)); // 0
+            settingsHabitat.Add(new SettingsItems("habitatCouchURL", "couch url", "http://habitat.habhub.org")); // 1
+            settingsHabitat.Add(new SettingsItems("habitatCouchDB", "couch db", "habitat")); // 2
 
             settingsLogging.Add(new SettingsItems("generalDataLogToggle", "data logger", true)); // 0
 
