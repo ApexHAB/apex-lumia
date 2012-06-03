@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
+
 namespace ApexLumia
 {
     public class Habitat
@@ -19,7 +20,7 @@ namespace ApexLumia
         public Boolean status { get { return _status; } }
 
 
-        public Habitat(){
+        public Habitat(string url){
 
         }
 
