@@ -14,10 +14,10 @@ namespace ApexLumia
 
         IsolatedStorageSettings savedSettings;
 
-        private string _settingID;
-        private string _settingName;
-        private object _settingValue;
-        private object _settingDefaultValue;
+        private String _settingID;
+        private String _settingName;
+        private Object _settingValue;
+        private Object _settingDefaultValue;
 
         /// <summary>
         /// Constructor: Grabs saved settings from Isolated Storage and loads the value of this new setting.
@@ -25,7 +25,7 @@ namespace ApexLumia
         /// <param name="id">Used as the key for saving the setting value in IsolatedStorage.</param>
         /// <param name="name">Readable name for display on the settings page</param>
         /// <param name="defaultvalue">The default value for the setting.</param>
-        public SettingsItems(string id, string name, object defaultvalue)
+        public SettingsItems(String id, String name, Object defaultvalue)
         {
             savedSettings = IsolatedStorageSettings.ApplicationSettings;
 
@@ -42,7 +42,7 @@ namespace ApexLumia
         public void Load()
         {
             if (savedSettings.Contains(_settingID)){
-                _settingValue = (object)savedSettings[_settingID];
+                _settingValue = (Object)savedSettings[_settingID];
             }else{
                 setDefault();
             }
@@ -73,18 +73,18 @@ namespace ApexLumia
             Save();
         }
 
-        public string settingID
+        public String settingID
         {
             get { return _settingID; }
         }
 
-        public string settingName
+        public String settingName
         {
             get { return _settingName; }
         }
 
 
-        public object settingValue
+        public Object settingValue
         {
             get { return _settingValue; }
             set
