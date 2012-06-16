@@ -26,7 +26,17 @@ namespace ApexLumia
             // Set context for binded controls to this class.
             DataContext = this;
             dataCount = "0000";
+
             
+            
+        }
+
+        private async void button1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            MessageBox.Show("Button Tapped");
+            HabitatInterface habitat = new HabitatInterface("http://habitat.habhub.org", "habitat");
+            string result = await habitat.getNewUUID();
+            MessageBox.Show(result);
         }
 
 

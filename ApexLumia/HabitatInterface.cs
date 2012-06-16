@@ -24,20 +24,25 @@ namespace ApexLumia
 
             _databaseurl = url;
             _databasename = name;
-
             _status = true;
+
         }
 
-        private async Task<string> getNewUUID()
-        {
-            //if (!NetworkInterface.GetIsNetworkAvailable()) { return ; }
-            Uri url = new Uri(_databaseurl + "_uuids");
+        
 
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+        public async Task<String> getNewUUID()
+        {
+
+            String url = _databaseurl + "_uuids";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
             WebResponse response = await request.GetResponseAsync();
+
+
             Stream stream = response.GetResponseStream();
             StreamReader reader = new StreamReader(stream);
             return reader.ReadToEnd();
+
         }
 
     }
