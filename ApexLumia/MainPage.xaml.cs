@@ -33,10 +33,9 @@ namespace ApexLumia
 
         private async void button1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            MessageBox.Show("Button Tapped");
             HabitatInterface habitat = new HabitatInterface("http://habitat.habhub.org", "habitat");
             string result = await habitat.getNewUUID();
-            MessageBox.Show(result);
+            System.Diagnostics.Debug.WriteLine("Result: " + result);
         }
 
 
