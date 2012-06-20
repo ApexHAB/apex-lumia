@@ -56,13 +56,12 @@ namespace ApexLumia
         {
             if (!NetworkInterface.GetIsNetworkAvailable()) { _status = false; return; }
 
-            String uuid = await getNewUUID();
-            if (uuid == "") { _status = false; return; }
+            String id; //Needs to be the SHA256 of the sentence.
 
-            String url = _databaseurl + _databasename + "/" + uuid;
+            String url = _databaseurl + _databasename + "/" + id;
 
             String json; //Get this from somewhere - perhaps pass the sentence object to this function which calls a converttojsonstring function or something.
-
+            json = "";
             try
             {
                 String result = await HTTPRequests.putRequest(url, json);
