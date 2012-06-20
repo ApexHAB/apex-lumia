@@ -30,6 +30,10 @@ namespace ApexLumia
 
         }
 
+        /// <summary>
+        /// Get a new, randomly generated UUID from the CouchDB itself for use in new documents.
+        /// </summary>
+        /// <returns></returns>
         public async Task<String> getNewUUID()
         {
             String url = _databaseurl + "_uuids";
@@ -64,8 +68,12 @@ namespace ApexLumia
         }
 
 
-
-        private async Task<String> getRequest(String url)
+        /// <summary>
+        /// Async: Make an HTTP GET request to a URL (with no extra parameters)
+        /// </summary>
+        /// <param name="url">The URL you would like to send a request to.</param>
+        /// <returns></returns>
+        private static async Task<String> getRequest(String url)
         {
             String result = "";
 
@@ -80,7 +88,13 @@ namespace ApexLumia
             return result;
         }
 
-        private async Task<String> putRequest(String url, String putData)
+        /// <summary>
+        /// Async: Make an HTTP PUT request to a URL with data
+        /// </summary>
+        /// <param name="url">The URL you would like to send a request to.</param>
+        /// <param name="putData">The data you would like to send to the URL (e.g. JSON)</param>
+        /// <returns></returns>
+        private static async Task<String> putRequest(String url, String putData)
         {
             String result;
             try
