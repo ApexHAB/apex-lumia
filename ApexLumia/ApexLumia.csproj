@@ -73,6 +73,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HTTPRequests.cs" />
     <Compile Include="HabitatInterface.cs" />
     <Compile Include="SettingsItems.cs" />
     <Compile Include="SettingsPage.xaml.cs">

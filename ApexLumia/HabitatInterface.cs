@@ -31,13 +31,13 @@ namespace ApexLumia
         }
 
         /// <summary>
-        /// Get a new, randomly generated UUID from the CouchDB itself for use in new documents.
+        /// Async: Get a new, randomly generated UUID from the CouchDB itself for use in new documents.
         /// </summary>
         /// <returns></returns>
         public async Task<String> getNewUUID()
         {
             String url = _databaseurl + "_uuids";
-            String retrievedJSON = await getRequest(url);
+            String retrievedJSON = await HTTPRequests.getRequest(url);
             Dictionary<string, string[]> json;
             string newUUID = "";
 
@@ -52,6 +52,8 @@ namespace ApexLumia
             return newUUID;
         }
 
+
+
         // Temporary
         public async void writeSomethingRandom(String data){
 
@@ -61,64 +63,14 @@ namespace ApexLumia
 
             string url = _databaseurl + _databasename + "/" + uuid;
 
-            String result = await putRequest(url, data);
+            String result = await HTTPRequests.putRequest(url, data);
             Dictionary<string, object> json = JsonConvert.DeserializeObject<Dictionary<String, object>>(result);
             _status = (Boolean)json["ok"];
 
         }
 
 
-        /// <summary>
-        /// Async: Make an HTTP GET request to a URL (with no extra parameters)
-        /// </summary>
-        /// <param name="url">The URL you would like to send a request to.</param>
-        /// <returns></returns>
-        private static async Task<String> getRequest(String url)
-        {
-            String result = "";
 
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                WebResponse response = await request.GetResponseAsync();
-                result = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            }
-            catch{ return ""; }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Async: Make an HTTP PUT request to a URL with data
-        /// </summary>
-        /// <param name="url">The URL you would like to send a request to.</param>
-        /// <param name="putData">The data you would like to send to the URL (e.g. JSON)</param>
-        /// <returns></returns>
-        private static async Task<String> putRequest(String url, String putData)
-        {
-            String result;
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "PUT";
-                request.ContentType = "application/json";
-                byte[] putbytes = System.Text.Encoding.UTF8.GetBytes(putData);
-                request.Headers[HttpRequestHeader.ContentLength] = putbytes.Length.ToString();
-
-                Stream putStream = await request.GetRequestStreamAsync();
-                putStream.Write(putbytes, 0, putbytes.Length);
-                putStream.Close();
-
-                WebResponse response = await request.GetResponseAsync();
-                result = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                                            
-
-            } catch { return ""; }
-
-
-            return result;
-            
-        }
 
     }
 }
