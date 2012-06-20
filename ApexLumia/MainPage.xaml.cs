@@ -31,12 +31,6 @@ namespace ApexLumia
             
         }
 
-        private void button1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            HabitatInterface habitat = new HabitatInterface("http://habitat.habhub.org", "habitat");
-            habitat.writeSomethingRandom("{\"type\": \"listener_telemetry\",\"time_created\": 1339984864,\"time_uploaded\": 1339984868,\"data\": {\"callsign\": \"LUMIA_CHASE\",\"time\": {\"hour\": 21,\"minute\": 0,\"second\": 0},\"latitude\": -35.11,\"longitude\": 137.567,\"altitude\": 12}}");
-        }
-
 
     }
 

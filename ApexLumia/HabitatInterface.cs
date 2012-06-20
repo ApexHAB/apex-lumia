@@ -34,12 +34,12 @@ namespace ApexLumia
         /// Async: Get a new, randomly generated UUID from the CouchDB itself for use in new documents.
         /// </summary>
         /// <returns></returns>
-        public async Task<String> getNewUUID()
+        private async Task<String> getNewUUID()
         {
             String url = _databaseurl + "_uuids";
             String retrievedJSON = await HTTPRequests.getRequest(url);
             Dictionary<string, string[]> json;
-            string newUUID = "";
+            String newUUID = "";
 
             try
             {
@@ -52,25 +52,27 @@ namespace ApexLumia
             return newUUID;
         }
 
+        public async void uploadSentence()
+        {
+            if (!NetworkInterface.GetIsNetworkAvailable()) { _status = false; return; }
 
+            String uuid = await getNewUUID();
+            if (uuid == "") { _status = false; return; }
 
-        // Temporary
-        public async void writeSomethingRandom(String data){
+            String url = _databaseurl + _databasename + "/" + uuid;
 
-            string uuid = await getNewUUID();
-            if (uuid == "") { _status = false;  return; }
-            
+            String json; //Get this from somewhere - perhaps pass the sentence object to this function which calls a converttojsonstring function or something.
 
-            string url = _databaseurl + _databasename + "/" + uuid;
-
-            String result = await HTTPRequests.putRequest(url, data);
-            Dictionary<string, object> json = JsonConvert.DeserializeObject<Dictionary<String, object>>(result);
-            _status = (Boolean)json["ok"];
+            try
+            {
+                String result = await HTTPRequests.putRequest(url, json);
+                Dictionary<string, object> resultJSON = JsonConvert.DeserializeObject<Dictionary<String, object>>(result);
+                _status = (Boolean)resultJSON["ok"];
+            }
+            catch { _status = false; }
 
         }
 
-
-
-
+   
     }
 }
