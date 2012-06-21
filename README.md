@@ -12,3 +12,12 @@ However, this is certainly not its only method of communication. A radio transmi
 And of course, what is the point of a high altitude balloon launch without photos? The Lumia's camera will be running throughout, snapping pics and recording clips of video for everyone to gaze at when it returns to Earth.
 
 It also does other stuff which you can work out by looking through the code ;)
+
+## Useful links
+
+* [Homepage](http://www.apexhab.org) - http://www.apexhab.org
+* [Contact](mailto:team@apexhab.org) - team@apexhab.org
+* [Twitter](http://twitter.com/apexhab) - http://twitter.com/apexhab
+
+## Authors
+* Daniel Saul
