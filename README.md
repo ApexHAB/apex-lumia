@@ -3,6 +3,8 @@ Apex Lumia
 
 Payload consisting of a Nokia Lumia 800 and NTX2 10mW transmitter.
 
+## Essay
+
 A custom Windows Phone app, written in C#, gathers data from the various on-board sensors - the most important being the GPS. This is then constructed into a standard UKHAS-style sentence.
 
 The sentence makes its way back to Earth in several ways. Firstly, when a data connection is available (typically below 8km), the phone will upload the sentences to Habitat's CouchDB itself. It will also tweet its location to an undecided twitter account.
