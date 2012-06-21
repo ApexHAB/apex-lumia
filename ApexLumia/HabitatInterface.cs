@@ -56,7 +56,7 @@ namespace ApexLumia
         {
             if (!NetworkInterface.GetIsNetworkAvailable()) { _status = false; return; }
 
-            String id; //Needs to be the SHA256 of the sentence.
+            String id = ""; //Needs to be the SHA256 of the sentence.
 
             String url = _databaseurl + _databasename + "/" + id;
 

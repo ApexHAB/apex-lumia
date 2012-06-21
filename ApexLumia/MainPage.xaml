@@ -117,7 +117,7 @@
             <controls:PanoramaItem Header="map">
                 <!--Double line list with image placeholder and text wrapping-->
                 <StackPanel >
-                    <my1:Map  Name="map" CredentialsProvider="AjstgGLPfgYAZPep2CFQ2P1cx1NaVb5xQQr1Yw1o0JkhIEILi25azC4A49fTWkvn" VerticalAlignment="Top" Height="434" Width="394" />
+                    <my1:Map  Name="map" ZoomLevel="16" CredentialsProvider="AjstgGLPfgYAZPep2CFQ2P1cx1NaVb5xQQr1Yw1o0JkhIEILi25azC4A49fTWkvn" VerticalAlignment="Top" Height="434" Width="394" />
                 </StackPanel>
             </controls:PanoramaItem>
 
