@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace ApexLumia
 {
-    public class HabitatInterface
+    public class CouchInterface
     {
 
         private Boolean _status;
@@ -19,7 +19,7 @@ namespace ApexLumia
         private String _databaseurl;
         private String _databasename;
 
-        public HabitatInterface(String url, String name)
+        public CouchInterface(String url, String name)
         {
 
             if (url.Substring(url.Length - 1,1) != "/"){ url += "/"; }
@@ -52,16 +52,14 @@ namespace ApexLumia
             return newUUID;
         }
 
-        public async void uploadSentence()
+        public async void uploadDocument(String json, String id = "")
         {
             if (!NetworkInterface.GetIsNetworkAvailable()) { _status = false; return; }
 
-            String id = ""; //Needs to be the SHA256 of the sentence.
+            if (id == "") { id = await getNewUUID(); }
 
             String url = _databaseurl + _databasename + "/" + id;
 
-            String json; //Get this from somewhere - perhaps pass the sentence object to this function which calls a converttojsonstring function or something.
-            json = "";
             try
             {
                 String result = await HTTPRequests.putRequest(url, json);
