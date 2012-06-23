@@ -11,29 +11,29 @@ namespace ApexLumia
     {
 
         #region "Location Properties (Private & Public)"
-        private Boolean _status;
-        public Boolean status { get { return _status; } }
+        private bool _status;
+        public bool status { get { return _status; } }
 
-        private String _latitude;
-        public String latitude { get { return _latitude; } }
+        private string _latitude;
+        public string latitude { get { return _latitude; } }
 
-        private String _longitude;
-        public String longitude { get { return _longitude; } }
+        private string _longitude;
+        public string longitude { get { return _longitude; } }
 
-        private String _speed;
-        public String speed { get { return _speed; } }
+        private string _speed;
+        public string speed { get { return _speed; } }
 
-        private String _heading;
-        public String heading { get { return _heading; } }
+        private string _heading;
+        public string heading { get { return _heading; } }
 
-        private String _altitude;
-        public String altitude { get { return _altitude; } }
+        private string _altitude;
+        public string altitude { get { return _altitude; } }
 
-        private String _horizontalaccuracy;
-        public String horizontalaccuracy { get { return _horizontalaccuracy; } }
+        private string _horizontalaccuracy;
+        public string horizontalaccuracy { get { return _horizontalaccuracy; } }
 
-        private String _verticalaccuracy;
-        public String verticalaccuracy { get { return _verticalaccuracy; } }
+        private string _verticalaccuracy;
+        public string verticalaccuracy { get { return _verticalaccuracy; } }
 
         private GeoCoordinate _currentlocation;
         public GeoCoordinate currentlocation { get { return _currentlocation; } }

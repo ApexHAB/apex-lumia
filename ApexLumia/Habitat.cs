@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Windows;
+using System.Text;
 
 
 namespace ApexLumia
@@ -10,25 +11,25 @@ namespace ApexLumia
 
         public Boolean status { get { return couch.status; } }
 
-        private String _callsign;
+        private string _callsign;
         private CouchInterface couch;
 
-        public Habitat(String dburl, String dbname, String callsign)
+        public Habitat(string dburl, string dbname, string callsign)
         {
 
             couch = new CouchInterface(dburl, dbname);
 
         }
 
-        public void uploadTelemetry(String fullsentence)
+        public void uploadTelemetry(string fullsentence)
         {
 
         }
 
-        static private String base64ify(String thing)
+        static private string base64ify(string thing)
         {
-            byte[] thebytesofthing = System.Text.UTF8Encoding.UTF8.GetBytes(thing);
-            string base64ified = System.Convert.ToBase64String(thebytesofthing);
+            byte[] thebytesofthing = UTF8Encoding.UTF8.GetBytes(thing);
+            string base64ified = Convert.ToBase64String(thebytesofthing);
             return base64ified;
         }
 

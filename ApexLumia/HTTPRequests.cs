@@ -15,9 +15,9 @@ namespace ApexLumia
         /// </summary>
         /// <param name="url">The URL you would like to send a request to.</param>
         /// <returns></returns>
-        public static async Task<String> getRequest(String url)
+        public static async Task<String> getRequest(string url)
         {
-            String result = "";
+            string result = "";
 
             try
             {
@@ -36,9 +36,9 @@ namespace ApexLumia
         /// <param name="url">The URL you would like to send a request to.</param>
         /// <param name="putData">The data you would like to send to the URL (e.g. JSON)</param>
         /// <returns></returns>
-        public static async Task<String> putRequest(String url, String putData)
+        public static async Task<String> putRequest(string url, string putData)
         {
-            String result;
+            string result;
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);

@@ -14,10 +14,10 @@ namespace ApexLumia
 
         IsolatedStorageSettings savedSettings;
 
-        private String _settingID;
-        private String _settingName;
-        private Object _settingValue;
-        private Object _settingDefaultValue;
+        private string _settingID;
+        private string _settingName;
+        private object _settingValue;
+        private object _settingDefaultValue;
 
         /// <summary>
         /// Constructor: Grabs saved settings from Isolated Storage and loads the value of this new setting.
@@ -25,7 +25,7 @@ namespace ApexLumia
         /// <param name="id">Used as the key for saving the setting value in IsolatedStorage.</param>
         /// <param name="name">Readable name for display on the settings page</param>
         /// <param name="defaultvalue">The default value for the setting.</param>
-        public SettingsItems(String id, String name, Object defaultvalue)
+        public SettingsItems(string id, string name, object defaultvalue)
         {
             savedSettings = IsolatedStorageSettings.ApplicationSettings;
 
@@ -42,7 +42,7 @@ namespace ApexLumia
         public void Load()
         {
             if (savedSettings.Contains(_settingID)){
-                _settingValue = (Object)savedSettings[_settingID];
+                _settingValue = (object)savedSettings[_settingID];
             }else{
                 setDefault();
             }
@@ -73,18 +73,18 @@ namespace ApexLumia
             Save();
         }
 
-        public String settingID
+        public string settingID
         {
             get { return _settingID; }
         }
 
-        public String settingName
+        public string settingName
         {
             get { return _settingName; }
         }
 
 
-        public Object settingValue
+        public object settingValue
         {
             get { return _settingValue; }
             set
@@ -99,7 +99,7 @@ namespace ApexLumia
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        void OnPropertyChanged(String propertyName)
+        void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {

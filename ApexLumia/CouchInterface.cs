@@ -13,13 +13,13 @@ namespace ApexLumia
     public class CouchInterface
     {
 
-        private Boolean _status;
-        public Boolean status { get { return _status; } }
+        private bool _status;
+        public bool status { get { return _status; } }
 
-        private String _databaseurl;
-        private String _databasename;
+        private string _databaseurl;
+        private string _databasename;
 
-        public CouchInterface(String url, String name)
+        public CouchInterface(string url, string name)
         {
 
             if (url.Substring(url.Length - 1,1) != "/"){ url += "/"; }
@@ -34,12 +34,12 @@ namespace ApexLumia
         /// Async: Get a new, randomly generated UUID from the CouchDB itself for use in new documents.
         /// </summary>
         /// <returns></returns>
-        private async Task<String> getNewUUID()
+        private async Task<string> getNewUUID()
         {
-            String url = _databaseurl + "_uuids";
-            String retrievedJSON = await HTTPRequests.getRequest(url);
+            string url = _databaseurl + "_uuids";
+            string retrievedJSON = await HTTPRequests.getRequest(url);
             Dictionary<string, string[]> json;
-            String newUUID = "";
+            string newUUID = "";
 
             try
             {
@@ -52,19 +52,19 @@ namespace ApexLumia
             return newUUID;
         }
 
-        public async void uploadDocument(String json, String id = "")
+        public async void uploadDocument(string json, string id = "")
         {
             if (!NetworkInterface.GetIsNetworkAvailable()) { _status = false; return; }
 
             if (id == "") { id = await getNewUUID(); }
 
-            String url = _databaseurl + _databasename + "/" + id;
+            string url = _databaseurl + _databasename + "/" + id;
 
             try
             {
-                String result = await HTTPRequests.putRequest(url, json);
-                Dictionary<string, object> resultJSON = JsonConvert.DeserializeObject<Dictionary<String, object>>(result);
-                _status = (Boolean)resultJSON["ok"];
+                string result = await HTTPRequests.putRequest(url, json);
+                Dictionary<string, object> resultJSON = JsonConvert.DeserializeObject<Dictionary<string, object>>(result);
+                _status = (bool)resultJSON["ok"];
             }
             catch { _status = false; }
 
