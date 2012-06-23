@@ -75,7 +75,7 @@
     </Compile>
     <Compile Include="Location.cs" />
     <Compile Include="HTTPRequests.cs" />
-    <Compile Include="HabitatInterface.cs" />
+    <Compile Include="CouchInterface.cs" />
     <Compile Include="SettingsItems.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
