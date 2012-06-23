@@ -52,6 +52,11 @@ namespace ApexLumia
             return newUUID;
         }
 
+        /// <summary>
+        /// Upload a new document to Couch.
+        /// </summary>
+        /// <param name="json">The JSON to upload as a new document</param>
+        /// <param name="id">The ID of the new document</param>
         public async void uploadDocument(string json, string id = "")
         {
             if (!NetworkInterface.GetIsNetworkAvailable()) { _status = false; return; }
