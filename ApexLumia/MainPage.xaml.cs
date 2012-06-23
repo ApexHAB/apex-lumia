@@ -21,8 +21,7 @@ namespace ApexLumia
 
         public Pushpin mapLocation = new Pushpin();
 
-        Location locationstuffs;
-
+        
         // Constructor
         public MainPage()
         {
@@ -31,6 +30,7 @@ namespace ApexLumia
             // Set context for binded controls to this class.
             DataContext = this;
             dataCount = "0000";
+
             
         }
 
