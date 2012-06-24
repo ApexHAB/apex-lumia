@@ -12,6 +12,7 @@ namespace ApexLumia
     {
 
         public ObservableCollection<SettingsItems> settingsGeneral { get; private set; }
+        public ObservableCollection<SettingsItems> settingsSentence { get; private set; }
         public ObservableCollection<SettingsItems> settingsRTTY { get; private set; }
         public ObservableCollection<SettingsItems> settingsHabitat { get; private set; }
         public ObservableCollection<SettingsItems> settingsCamera { get; private set; }
@@ -25,6 +26,7 @@ namespace ApexLumia
         {
             
             this.settingsGeneral = new ObservableCollection<SettingsItems>();
+            this.settingsSentence = new ObservableCollection<SettingsItems>();
             this.settingsRTTY = new ObservableCollection<SettingsItems>();
             this.settingsHabitat = new ObservableCollection<SettingsItems>();
             this.settingsCamera = new ObservableCollection<SettingsItems>();
@@ -41,6 +43,8 @@ namespace ApexLumia
         public void LoadAllSettings()
         {
             settingsGeneral.Add(new SettingsItems("generalProjectName", "project name", "ApexHAB")); // 0
+
+            settingsSentence.Add(new SettingsItems("sentenceCallsign", "callsign", "LUMIA")); // 0
 
             settingsRTTY.Add(new SettingsItems("rttyRTTYToggle", "rtty transmission", true)); // 0
 
@@ -63,6 +67,8 @@ namespace ApexLumia
         {
             // General Settings
             for (int i = 0; i <= settingsGeneral.Count-1; i++) { settingsGeneral[i].setDefault(); }
+            // Sentence Settings
+            for (int i = 0; i <= settingsSentence.Count - 1; i++) { settingsSentence[i].setDefault(); }
             // RTTY Settings
             for (int i = 0; i <= settingsRTTY.Count-1; i++) { settingsRTTY[i].setDefault(); }
             // Habitat Settings
