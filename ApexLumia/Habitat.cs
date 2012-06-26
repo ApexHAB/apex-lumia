@@ -49,10 +49,10 @@ namespace ApexLumia
             // about ensuring the system knows we 'received' it too.
 
             string type = "payload_telemetry";
-            string _raw = base64ify(fullsentence);
-            string id = sha256ify(_raw);
-            int timecreated = unix_timestamp();
-            int timeuploaded = unix_timestamp();
+            string _raw = Utils.base64ify(fullsentence);
+            string id = Utils.sha256ify(_raw);
+            int timecreated = Utils.unix_timestamp();
+            int timeuploaded = Utils.unix_timestamp();
 
             var telemetry_doc = new Dictionary<string, object>(){
                 {"type", type},
