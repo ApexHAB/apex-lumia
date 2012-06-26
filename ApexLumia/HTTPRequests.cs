@@ -70,10 +70,11 @@ namespace ApexLumia
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "POST";
-                //request.ContentType = "application/json";
+                request.ContentType = "application/x-www-form-urlencoded";
                 byte[] postbytes = System.Text.Encoding.UTF8.GetBytes(postData);
                 request.Headers[HttpRequestHeader.ContentLength] = postbytes.Length.ToString();
                 request.Headers[HttpRequestHeader.Authorization] = authorization;
+                System.Diagnostics.Debug.WriteLine(authorization);
 
                 Stream postStream = await request.GetRequestStreamAsync();
                 postStream.Write(postbytes, 0, postbytes.Length);
