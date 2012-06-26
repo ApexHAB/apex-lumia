@@ -39,6 +39,23 @@ namespace ApexLumia
 
         }
 
+        static public string hmacsha1ify(string thing, string key)
+        {
+            byte[] thebytesofthing = UTF8Encoding.UTF8.GetBytes(thing);
+            byte[] thebytesofkey = UTF8Encoding.UTF8.GetBytes(key);
+
+            HMACSHA1 algorithm = new HMACSHA1(thebytesofkey);
+            byte[] buff = algorithm.ComputeHash(thebytesofthing);
+
+            string sbinary = "";
+
+            for (int i = 0; i < buff.Length; i++)
+            {
+                sbinary += buff[i].ToString("X2"); // hex format
+            }
+            return (sbinary);
+        }
+
         /// <summary>
         /// Guess what: it gives you a UNIX timestamp.
         /// </summary>
