@@ -15,7 +15,7 @@ namespace ApexLumia
         /// </summary>
         /// <param name="url">The URL you would like to send a request to.</param>
         /// <returns></returns>
-        public static async Task<String> getRequest(string url)
+        public static async Task<String> getRequestAsync(string url)
         {
             string result = "";
 
@@ -36,14 +36,14 @@ namespace ApexLumia
         /// <param name="url">The URL you would like to send a request to.</param>
         /// <param name="putData">The data you would like to send to the URL (e.g. JSON)</param>
         /// <returns></returns>
-        public static async Task<String> putRequest(string url, string putData)
+        public static async Task<String> putRequestAsync(string url, string putData)
         {
             string result;
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "PUT";
-                request.ContentType = "application/json";
+                //request.ContentType = "application/json";
                 byte[] putbytes = System.Text.Encoding.UTF8.GetBytes(putData);
                 request.Headers[HttpRequestHeader.ContentLength] = putbytes.Length.ToString();
 
@@ -62,5 +62,33 @@ namespace ApexLumia
             return result;
 
         }
+
+        public static async Task<String> postRequestAsync(string url, string postData, string authorization = "")
+        {
+            string result;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "POST";
+                //request.ContentType = "application/json";
+                byte[] postbytes = System.Text.Encoding.UTF8.GetBytes(postData);
+                request.Headers[HttpRequestHeader.ContentLength] = postbytes.Length.ToString();
+                request.Headers[HttpRequestHeader.Authorization] = authorization;
+
+                Stream postStream = await request.GetRequestStreamAsync();
+                postStream.Write(postbytes, 0, postbytes.Length);
+                postStream.Close();
+
+                WebResponse response = await request.GetResponseAsync();
+                result = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            }
+            catch { return ""; }
+
+
+            return result;
+        }
+
     }
 }

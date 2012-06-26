@@ -8,6 +8,7 @@ using Microsoft.Phone.Net.NetworkInformation;
 using Newtonsoft.Json;
 
 
+
 namespace ApexLumia
 {
     public class CouchInterface
@@ -37,7 +38,7 @@ namespace ApexLumia
         private async Task<string> getNewUUID()
         {
             string url = _databaseurl + "_uuids";
-            string retrievedJSON = await HTTPRequests.getRequest(url);
+            string retrievedJSON = await HTTPRequests.getRequestAsync(url);
             Dictionary<string, string[]> json;
             string newUUID = "";
 
@@ -67,7 +68,7 @@ namespace ApexLumia
 
             try
             {
-                string result = await HTTPRequests.putRequest(url, json);
+                string result = await HTTPRequests.putRequestAsync(url, json);
                 Dictionary<string, object> resultJSON = JsonConvert.DeserializeObject<Dictionary<string, object>>(result);
                 _status = (bool)resultJSON["ok"];
             }
