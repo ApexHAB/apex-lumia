@@ -73,6 +73,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
+    <Compile Include="Twitter.cs" />
     <Compile Include="Habitat.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="HTTPRequests.cs" />
