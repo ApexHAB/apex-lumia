@@ -43,7 +43,6 @@ namespace ApexLumia
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "PUT";
-                //request.ContentType = "application/json";
                 byte[] putbytes = System.Text.Encoding.UTF8.GetBytes(putData);
                 request.Headers[HttpRequestHeader.ContentLength] = putbytes.Length.ToString();
 
@@ -63,18 +62,17 @@ namespace ApexLumia
 
         }
 
-        public static async Task<String> postRequestAsync(string url, string postData, string authorization = "")
+        public static async Task<String> postRequestAsync(string url, string postData, string authorization = "", bool Expect100Continue = true)
         {
             string result;
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
+               
                 byte[] postbytes = System.Text.Encoding.UTF8.GetBytes(postData);
                 request.Headers[HttpRequestHeader.ContentLength] = postbytes.Length.ToString();
                 request.Headers[HttpRequestHeader.Authorization] = authorization;
-                System.Diagnostics.Debug.WriteLine(authorization);
 
                 Stream postStream = await request.GetRequestStreamAsync();
                 postStream.Write(postbytes, 0, postbytes.Length);
@@ -82,7 +80,6 @@ namespace ApexLumia
 
                 WebResponse response = await request.GetResponseAsync();
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
 
             }
             catch { return ""; }
