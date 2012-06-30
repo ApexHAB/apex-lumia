@@ -31,9 +31,6 @@ namespace ApexLumia
             DataContext = this;
             dataCount = "0000";
 
-            Twitter tweet = new Twitter("apexlumia", "Zf9SUn9D4TKqeq5j8TXwaw", "g7ywiXPaCffibK6iOa8KGR12iMZKKzkqrN2GTffpg", "616537021-B4vbyk3n4v6ht3or8r4YFrCjOHNDrkaohrdFn6lY", "THCNSCDw4OQU5zPNax4pUBoLIVwIvjWX6fdzWkwXXo");
-            tweet.newStatus("Hello Everyone!");
-            //System.Diagnostics.Debug.WriteLine(tweet.generateAuthorizationHeader("https://api.twitter.com/1/statuses/update.json","POST","Hello World"));
         }
 
 
