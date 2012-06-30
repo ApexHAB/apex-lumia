@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Windows;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ApexLumia
 {
@@ -14,10 +16,15 @@ namespace ApexLumia
         private string _consumersecret;
         private string _accesstoken;
         private string _accesssecret;
-
         
-        
-
+        /// <summary>
+        /// Constructor: Set important info.
+        /// </summary>
+        /// <param name="user">Twitter Username</param>
+        /// <param name="consumerkey">Twitter App Consumer Key</param>
+        /// <param name="consumersecret">Twitter App Consumer Secret</param>
+        /// <param name="accesstoken">Twitter User Access Token</param>
+        /// <param name="accesssecret">Twitter User Access Token Secret</param>
         public Twitter(string user, string consumerkey, string consumersecret, string accesstoken, string accesssecret)
         {
             _username = user;
@@ -28,50 +35,68 @@ namespace ApexLumia
 
         }
 
-        public async void newStatus(string tweet)
+        /// <summary>
+        /// Async: Post a new tweet to the previously defined twitter account.
+        /// </summary>
+        /// <param name="tweet">The tweet to post. Max. 140 chars</param>
+        public async void newStatusAsync(string tweet)
         {
-
             string url = "https://api.twitter.com/1/statuses/update.json";
-            string authorization = generateAuthorizationHeader(url, "POST", tweet);
-            string content = string.Format("status={0}&include_entities=true",Utils.UrlEncodeRelaxed(tweet));
+
+            var parameters = new Dictionary<string, string>();
+            parameters.Add("status",Utils.UrlEncodeRelaxed(tweet));
+
+            string authorization = generateAuthorizationHeader(url, "POST", parameters);
+            string content = string.Format("status={0}",Utils.UrlEncodeRelaxed(tweet));
 
             string result = await HTTPRequests.postRequestAsync(url, content, authorization);
-            System.Diagnostics.Debug.WriteLine(result);
+            if (result == "") { _status = false; } else { _status = true; }
         }
 
-        public string generateAuthorizationHeader(string url, string method, string status = "")
+        /// <summary>
+        /// Generate the OAuth HTTP Authorization header for twitter requests
+        /// </summary>
+        /// <param name="url">The URL the request will be made to.</param>
+        /// <param name="method">The method of the request.</param>
+        /// <param name="otherparams">Any other parameters specific to the request.</param>
+        /// <returns></returns>
+        public string generateAuthorizationHeader(string url, string method, Dictionary<string, string> otherparams)
         {
-            string oauth_nonce = Utils.UrlEncodeRelaxed(Utils.uniqueAlphanumericString());
-            string oauth_consumer_key = Utils.UrlEncodeRelaxed(_consumerkey);
-            string oauth_timestamp = Utils.UrlEncodeRelaxed(Utils.unix_timestamp().ToString());
-            string oauth_token = Utils.UrlEncodeRelaxed(_accesstoken);
-            status = Utils.UrlEncodeRelaxed(status);
-            url = Utils.UrlEncodeRelaxed(url);
 
-            string parameterString = "";
-            parameterString += "include_entities=true";
-            parameterString += "&oauth_consumer_key=" + oauth_consumer_key;
-            parameterString += "&oauth_nonce=" + oauth_nonce;
-            parameterString += "&oauth_signature_method=HMAC-SHA1";
-            parameterString += "&oauth_timestamp=" + oauth_timestamp;
-            parameterString += "&oauth_token=" + oauth_token;
-            parameterString += "&oauth_version=1.0";
-            if (status != "") { parameterString += "&status=" + status; }
+            var parameters = new Dictionary<string, string>();
+            parameters.Add("oauth_version", "1.0");
+            parameters.Add("oauth_consumer_key", _consumerkey);
+            parameters.Add("oauth_nonce", Utils.uniqueAlphanumericString());
+            parameters.Add("oauth_signature_method", "HMAC-SHA1");
+            parameters.Add("oauth_timestamp", Utils.unix_timestamp().ToString());
+            parameters.Add("oauth_token", _accesstoken);
 
-            string outputString = method + "&" + url + "&" + Utils.UrlEncodeRelaxed(parameterString);
+            foreach (var item in otherparams)
+            {
+                parameters[item.Key] = item.Value;
+            }
+
+            parameters = parameters.OrderBy(x => x.Key).ToDictionary(v => v.Key, v => v.Value);
+            
+
+            string outputString = method + "&" + Utils.UrlEncodeRelaxed(url) + "&";
+            foreach (var parameter in parameters)
+            {
+                outputString += Utils.UrlEncodeRelaxed(parameter.Key + "=" + parameter.Value + "&");
+            }
+            outputString = outputString.Substring(0, outputString.Length - 3);
 
             string signingKey = Utils.UrlEncodeRelaxed(_consumersecret) + "&" + Utils.UrlEncodeRelaxed(_accesssecret);
-
-            string hmacsha1 = Utils.hmacsha1ify(outputString, signingKey);
-            string signature = Utils.base64ify(hmacsha1);
+            byte[] hmacsha1 = Utils.hmacsha1ify(outputString, signingKey);
+            string signature = Convert.ToBase64String(hmacsha1);
 
             string header = "OAuth ";
-            header += "oauth_consumer_key=\"" + oauth_consumer_key + "\", ";
-            header += "oauth_nonce=\"" + oauth_nonce + "\", ";
+            header += "oauth_consumer_key=\"" + Utils.UrlEncodeRelaxed(parameters["oauth_consumer_key"]) + "\", ";
+            header += "oauth_nonce=\"" + Utils.UrlEncodeRelaxed(parameters["oauth_nonce"]) + "\", ";
             header += "oauth_signature=\"" + Utils.UrlEncodeRelaxed(signature) + "\", ";
             header += "oauth_signature_method=\"HMAC-SHA1\", ";
-            header += "oauth_timestamp=\"" + oauth_timestamp + "\", ";
-            header += "oauth_token=\"" + oauth_token + "\", ";
+            header += "oauth_timestamp=\"" + Utils.UrlEncodeRelaxed(parameters["oauth_timestamp"]) + "\", ";
+            header += "oauth_token=\"" + Utils.UrlEncodeRelaxed(parameters["oauth_token"]) + "\", ";
             header += "oauth_version=\"1.0\"";
 
             return header;
