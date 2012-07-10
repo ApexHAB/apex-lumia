@@ -21,6 +21,9 @@ namespace ApexLumia
 
         double _amplitude = 0.5;
 
+        bool _isRunning = false;
+        public bool isRunning { get { return _isRunning; } }
+
         public double amplitude
         {
             get { return _amplitude; }
@@ -43,7 +46,13 @@ namespace ApexLumia
             updateBuffer();
             updateBuffer();
             _dynamicSound.Play();
+            _isRunning = true;
+        }
 
+        public void Stop()
+        {
+            _dynamicSound.Stop();
+            _isRunning = false;
         }
 
         void BufferNeeded(object sender, EventArgs e)
