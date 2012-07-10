@@ -75,6 +75,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RTTY.cs" />
     <Compile Include="DispatcherService.cs" />
     <Compile Include="Sound.cs" />
     <Compile Include="Utils.cs" />
