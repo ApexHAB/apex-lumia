@@ -51,19 +51,23 @@ namespace ApexLumia
 
             shiftToVolumes();
 
-            _dynamicSound = new DynamicSoundEffectInstance(_sampleRate, AudioChannels.Mono);
-
-            _BufferLength = (int)((1/_baudrate) * 11 * _sampleRate * 2);
+            
+            _BufferLength = (int)((1d/(double)_baudrate) * 11d * (double)_sampleRate * 2d);
             _BitLength = _BufferLength / 11;
             _FloatBuffer = new double[_BufferLength];
             _ByteBuffer = new byte[_BufferLength * 2];
+
+            System.Diagnostics.Debug.WriteLine(_BufferLength);
+
+            _dynamicSound = new DynamicSoundEffectInstance(_sampleRate, AudioChannels.Mono);
+            _dynamicSound.BufferNeeded += BufferNeeded;
 
         }
 
         public void Start()
         {
             
-            _dynamicSound.BufferNeeded += BufferNeeded;
+            
             updateBuffer();
             updateBuffer();
             updateBuffer();
@@ -93,18 +97,21 @@ namespace ApexLumia
             updateBuffer();
         }
 
-        private List<bool> _nextTransmission;
-        private List<bool> _currentTransmission;
+        private List<bool> _nextTransmission = new List<bool>();
+        private List<bool> _currentTransmission = new List<bool>();
         private int x;
 
         private void updateBuffer()
         {
             for (int i = 0; i < _BufferLength; i++)
             {
-                if (x >= _BitLength && _currentTransmission.Count != 0)
+                if (x >= _BitLength)
                 {
                     x = 0;
-                    _currentTransmission.RemoveAt(0);
+                    if (_currentTransmission.Count != 0)
+                    {
+                        _currentTransmission.RemoveAt(0);
+                    }
                 }
                 else { x++; }
 
