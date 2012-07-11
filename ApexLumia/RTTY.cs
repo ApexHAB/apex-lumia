@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Windows;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -11,8 +12,20 @@ namespace ApexLumia
     public class RTTY
     {
 
-        Sound sound;
-        BackgroundWorker tx = new BackgroundWorker();
+        DynamicSoundEffectInstance _dynamicSound;
+
+        int _sampleRate;
+        double _frequency;
+        double _timechange;
+        int _BufferLength;
+        int _BitLength;
+        double[] _FloatBuffer; 
+        byte[] _ByteBuffer;
+        double _Phase = 0.0;
+        double _amplitude = 0.5;
+
+        bool _isRunning = false;
+        public bool isRunning { get { return _isRunning; } }
 
         bool _isReady = true;
         public bool isReady { get { return _isReady; } }
@@ -26,15 +39,12 @@ namespace ApexLumia
         int _stopBits;
         string _preamble;
 
-        /// <summary>
-        /// Constructor: Settings for transmitting RTTY.
-        /// </summary>
-        /// <param name="baud">The baud rate of the RTTY transmission.</param>
-        /// <param name="shift">The shift for the transmission (Hz)</param>
-        /// <param name="stopbits">The number of stop bits for each byte.</param>
-        /// <param name="preamble">The preamble.</param>
-        public RTTY(int baud = 300, int shift = 425, int stopbits = 2, string preamble = "UUUUUUUUU")
+        public RTTY(double frequency = 1000, int samplerate = 22000, int baud = 300, int shift = 425, int stopbits = 2, string preamble = "UUUUUUUUU")
         {
+            _sampleRate = samplerate;
+            _frequency = frequency;
+            _timechange = _frequency * (1.0d / _sampleRate);
+
             _baudrate = baud;
             _shift = shift;
             _stopBits = stopbits;
@@ -42,23 +52,29 @@ namespace ApexLumia
 
             shiftToVolumes();
 
-            sound = new Sound(1000.0, 22000);
+            _dynamicSound = new DynamicSoundEffectInstance(_sampleRate, AudioChannels.Mono);
 
-            tx.WorkerSupportsCancellation = true;
-            tx.WorkerReportsProgress = false;
-
+            _BufferLength = (int)((1/_baudrate) * 11 * _sampleRate * 2);
+            _BitLength = _BufferLength / 11;
+            _FloatBuffer = new double[_BufferLength];
+            _ByteBuffer = new byte[_BufferLength * 2];
         }
 
         public void Start()
         {
-            sound.Start();
-            _isReady = true;
+            
+            _dynamicSound.BufferNeeded += BufferNeeded;
+            updateBuffer();
+            updateBuffer();
+            updateBuffer();
+            _dynamicSound.Play();
+            _isRunning = true;
         }
 
         public void Stop()
         {
-            sound.Stop();
-            _isReady = false;
+            _dynamicSound.Stop();
+            _isRunning = false;
         }
 
         public void transmitPreamble()
@@ -77,41 +93,27 @@ namespace ApexLumia
 
         }
 
-        private void tx_DoWork(object sender, DoWorkEventArgs e)
+        void BufferNeeded(object sender, EventArgs e)
         {
-            _isReady = false;
-            BackgroundWorker worker = sender as BackgroundWorker;
-
-            if (worker.CancellationPending == true)
-            {
-                // Should probably do something here... like stop transmitting stuff...
-                e.Cancel = true;
-                return;
-            }
-
-            // Then here, we'll do work! Like loop through all the bits using the correct timing and transmit them!!! Yay!!!
-
+            updateBuffer();
         }
 
-        private void tx_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void updateBuffer()
         {
-            if (e.Cancelled == true)
+            for (int i = 0; i < _BufferLength; i++)
             {
-                // It hasnt actually completed, it was cancelled... but it sends us here anyway. But since it was cancelled we don't want to do anything.
-                _isReady = true;
-                return;
+                _FloatBuffer[i] = _amplitude * Math.Sin(Math.PI * _Phase * 2.0d);
+                _Phase += _timechange;
             }
-
-            if (e.Error != null)
+            for (int i = 0; i < _BufferLength; i++)
             {
-                // There was an error... eeeek... oh well, not going to bother doing anything about it... may log it later on.
-            }
+                short samp = (short)(_FloatBuffer[i] * short.MaxValue);
 
-            // It's finished transmitting those bits it was meant to be transmitting... now we can notify stuff that we're ready to transmit new stuff.
-            _isReady = true;
+                _ByteBuffer[i * 2 + 0] = (byte)(samp & 0xFF);
+                _ByteBuffer[i * 2 + 1] = (byte)(samp >> 8);
+            }
+            _dynamicSound.SubmitBuffer(_ByteBuffer);
         }
-
-
 
         /// <summary>
         /// Convert a string to a list of bits incl. start bits and stop bits.
@@ -158,6 +160,7 @@ namespace ApexLumia
                 highVolume = 0.7;
             }
         }
+
 
     }
 }
