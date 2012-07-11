@@ -39,12 +39,11 @@ namespace ApexLumia
         int _stopBits;
         string _preamble;
 
-        public RTTY(double frequency = 1000, int samplerate = 22000, int baud = 300, int shift = 425, int stopbits = 2, string preamble = "UUUUUUUUU")
+        public RTTY(double frequency = 1000, int samplerate = 42000, int baud = 300, int shift = 425, int stopbits = 2, string preamble = "UUUUUUUUU")
         {
             _sampleRate = samplerate;
             _frequency = frequency;
             _timechange = _frequency * (1.0d / _sampleRate);
-
             _baudrate = baud;
             _shift = shift;
             _stopBits = stopbits;
@@ -58,6 +57,7 @@ namespace ApexLumia
             _BitLength = _BufferLength / 11;
             _FloatBuffer = new double[_BufferLength];
             _ByteBuffer = new byte[_BufferLength * 2];
+
         }
 
         public void Start()
@@ -77,19 +77,14 @@ namespace ApexLumia
             _isRunning = false;
         }
 
-        public void transmitPreamble()
-        {
-            string preamble = _preamble + "\n";
-            List<int> bits = convertToBits(preamble);
 
-        }
 
         public void transmitSentence(string sentence)
         {
+            if (_nextTransmission.Count != 0) { return; }
+
             sentence = sentence + "\n";
-            List<int> bits = convertToBits(sentence);
-
-
+            _nextTransmission = convertToBits(sentence);
 
         }
 
@@ -98,12 +93,41 @@ namespace ApexLumia
             updateBuffer();
         }
 
+        private List<bool> _nextTransmission;
+        private List<bool> _currentTransmission;
+        private int x;
+
         private void updateBuffer()
         {
             for (int i = 0; i < _BufferLength; i++)
             {
+                if (x >= _BitLength && _currentTransmission.Count != 0)
+                {
+                    x = 0;
+                    _currentTransmission.RemoveAt(0);
+                }
+                else { x++; }
+
+                if (_currentTransmission.Count != 0)
+                {
+                    // We are in the middle of a transmission: there is data to transmit
+                    if (_currentTransmission[0]) { _amplitude = highVolume; } else { _amplitude = lowVolume; }
+                }
+                else if (_nextTransmission.Count != 0)
+                {
+                    // There is no current transmission, but there is data waiting to be transmitted.
+                    _currentTransmission = _nextTransmission;
+                    _nextTransmission.Clear();
+                    _amplitude = lowVolume;
+
+                }else{
+                    // There is no data to transmit at all. Shame. Real Shame.
+                    _amplitude = lowVolume;
+                }
+
                 _FloatBuffer[i] = _amplitude * Math.Sin(Math.PI * _Phase * 2.0d);
                 _Phase += _timechange;
+                
             }
             for (int i = 0; i < _BufferLength; i++)
             {
@@ -120,30 +144,30 @@ namespace ApexLumia
         /// </summary>
         /// <param name="toConvert">The string to convert.</param>
         /// <returns></returns>
-        private List<int> convertToBits(string toConvert)
+        private List<bool> convertToBits(string toConvert)
         {
 
             byte[] theBytes = UTF8Encoding.UTF8.GetBytes(toConvert);
-            var result = new List<int>();
+            var result = new List<bool>();
             
             foreach (byte b in theBytes)
             {
                 byte c = b;
 
                 // Start bit
-                result.Add(0); 
+                result.Add(false); 
 
                 // Byte bits
                 for (int i = 0; i < 8; i++)
                 {
-                    if ((c & 1) == 1) { result.Add(1); } else { result.Add(0); }
+                    if ((c & 1) == 1) { result.Add(true); } else { result.Add(false); }
                     c = (byte)(c >> 1);
                 }
 
                 // Stop bits
                 for (int i = 0; i < _stopBits; i++)
                 {
-                    result.Add(1);
+                    result.Add(true);
                 }
             }
             return result;
@@ -157,6 +181,7 @@ namespace ApexLumia
             if (_shift == 425)
             {
                 lowVolume = 0.5;
+                _amplitude = lowVolume;
                 highVolume = 0.7;
             }
         }
