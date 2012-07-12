@@ -13,8 +13,11 @@ namespace ApexLumia
     public class RTTY
     {
 
-        DynamicSoundEffectInstance _dynamicSound;
+        #region "Properties"
+        bool _isRunning = false;
+        public bool isRunning { get { return _isRunning; } }
 
+        DynamicSoundEffectInstance _dynamicSound;
         int _sampleRate;
         double _frequency;
         double _timechange;
@@ -24,23 +27,29 @@ namespace ApexLumia
         byte[] _ByteBuffer;
         double _Phase = 0.0;
         double _amplitude = 0.5;
-
-        bool _isRunning = false;
-        public bool isRunning { get { return _isRunning; } }
-
-        bool _isReady = true;
-        public bool isReady { get { return _isReady; } }
-
+        
         int _baudrate;
-
         int _shift;
         double lowVolume;
         double highVolume;
-
         int _stopBits;
-        string _preamble;
 
-        public RTTY(double frequency = 1000, int samplerate = 42000, int baud = 300, int shift = 425, double low = 0.4, double high = 0.7, int stopbits = 2, string preamble = "UUUUUUUUU")
+        private List<bool> _nextTransmission = new List<bool>();
+        private List<bool> _currentTransmission = new List<bool>();
+        private int x;
+        #endregion
+
+        /// <summary>
+        /// Constructor: Setup RTTY and Sound settings.
+        /// </summary>
+        /// <param name="frequency">The frequency of the sine wave.</param>
+        /// <param name="samplerate">The sample rate of the sound.</param>
+        /// <param name="baud">The baud rate of the data transmission.</param>
+        /// <param name="shift">The eventual radio frequency shift in Hz. (Not used)</param>
+        /// <param name="low">The amplitude for a 'low' bit. 0.0->1.0</param>
+        /// <param name="high">The amplitude for a 'high' bit. 0.0->1.0</param>
+        /// <param name="stopbits">The number of stop bits for each byte.</param>
+        public RTTY(double frequency = 1000, int samplerate = 42000, int baud = 300, int shift = 425, double low = 0.4, double high = 0.7, int stopbits = 2)
         {
             _sampleRate = samplerate;
             _frequency = frequency;
@@ -48,7 +57,6 @@ namespace ApexLumia
             _baudrate = baud;
             _shift = shift;
             _stopBits = stopbits;
-            _preamble = preamble;
             lowVolume = low;
             highVolume = high;
 
@@ -58,17 +66,16 @@ namespace ApexLumia
             _FloatBuffer = new double[_BufferLength];
             _ByteBuffer = new byte[_BufferLength * 2];
 
-            System.Diagnostics.Debug.WriteLine(_BufferLength);
-
             _dynamicSound = new DynamicSoundEffectInstance(_sampleRate, AudioChannels.Mono);
             _dynamicSound.BufferNeeded += BufferNeeded;
 
         }
 
+        /// <summary>
+        /// Start the sine wave playing.
+        /// </summary>
         public void Start()
         {
-            
-            
             updateBuffer("");
             updateBuffer("");
             updateBuffer("");
@@ -76,6 +83,9 @@ namespace ApexLumia
             _isRunning = true;
         }
 
+        /// <summary>
+        /// Stop the sine wave from playing.
+        /// </summary>
         public void Stop()
         {
             _dynamicSound.Stop();
@@ -83,29 +93,35 @@ namespace ApexLumia
         }
 
 
-
-        public void transmitSentence(string sentence)
+        /// <summary>
+        /// Gets a sentence ready to be transmitted next. If this is called again whilst a sentence is already queued, the queued sentence is overwritten with the new one.
+        /// </summary>
+        /// <param name="sentence">The string to be transmitted.</param>
+        /// <returns>Whether it was successfully queued.</returns>
+        public bool transmitSentence(string sentence)
         {
-            if (_nextTransmission.Count != 0) { return; }
+            if (_isRunning == false) { return false; }
 
             sentence = sentence + "\n";
             _nextTransmission = convertToBits(sentence);
-            //System.Diagnostics.Debug.WriteLine("_nextTransmission: {0}", _nextTransmission.Count);
+            return true;
            
         }
 
+        /// <summary>
+        /// Event Handler: Called when a new buffer is needed. Calls updateBuffer() on a new thread.
+        /// </summary>
         void BufferNeeded(object sender, EventArgs e)
         {
+            // Update the buffer in a different thread
             ThreadPool.QueueUserWorkItem(updateBuffer);
         }
 
-        private List<bool> _nextTransmission = new List<bool>();
-        private List<bool> _currentTransmission = new List<bool>();
-        private int x;
-
+        /// <summary>
+        /// Fills the next buffer with a sine wave, amplitude modulated with the data to be transmitted.
+        /// </summary>
         private void updateBuffer(object o)
         {
-            //System.Diagnostics.Debug.WriteLine("\n Updating Buffer:");
 
             for (int i = 0; i < _BufferLength; i++)
             {
@@ -154,7 +170,7 @@ namespace ApexLumia
         }
 
         /// <summary>
-        /// Convert a string to a list of bits incl. start bits and stop bits.
+        /// Convert a string to a list of bits (booleans) incl. start bits and stop bits.
         /// </summary>
         /// <param name="toConvert">The string to convert.</param>
         /// <returns></returns>
