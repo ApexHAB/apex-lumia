@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using System.Threading;
 
 namespace ApexLumia
 {
@@ -39,7 +40,7 @@ namespace ApexLumia
         int _stopBits;
         string _preamble;
 
-        public RTTY(double frequency = 1000, int samplerate = 42000, int baud = 300, int shift = 425, int stopbits = 2, string preamble = "UUUUUUUUU")
+        public RTTY(double frequency = 1000, int samplerate = 42000, int baud = 300, int shift = 425, double low = 0.4, double high = 0.7, int stopbits = 2, string preamble = "UUUUUUUUU")
         {
             _sampleRate = samplerate;
             _frequency = frequency;
@@ -48,10 +49,10 @@ namespace ApexLumia
             _shift = shift;
             _stopBits = stopbits;
             _preamble = preamble;
+            lowVolume = low;
+            highVolume = high;
 
-            shiftToVolumes();
-
-            
+                     
             _BufferLength = (int)((1d/(double)_baudrate) * 11d * (double)_sampleRate * 2d);
             _BitLength = _BufferLength / 11;
             _FloatBuffer = new double[_BufferLength];
@@ -68,9 +69,9 @@ namespace ApexLumia
         {
             
             
-            updateBuffer();
-            updateBuffer();
-            updateBuffer();
+            updateBuffer("");
+            updateBuffer("");
+            updateBuffer("");
             _dynamicSound.Play();
             _isRunning = true;
         }
@@ -89,27 +90,31 @@ namespace ApexLumia
 
             sentence = sentence + "\n";
             _nextTransmission = convertToBits(sentence);
-
+            //System.Diagnostics.Debug.WriteLine("_nextTransmission: {0}", _nextTransmission.Count);
+           
         }
 
         void BufferNeeded(object sender, EventArgs e)
         {
-            updateBuffer();
+            ThreadPool.QueueUserWorkItem(updateBuffer);
         }
 
         private List<bool> _nextTransmission = new List<bool>();
         private List<bool> _currentTransmission = new List<bool>();
         private int x;
 
-        private void updateBuffer()
+        private void updateBuffer(object o)
         {
+            //System.Diagnostics.Debug.WriteLine("\n Updating Buffer:");
+
             for (int i = 0; i < _BufferLength; i++)
             {
                 if (x >= _BitLength)
                 {
-                    x = 0;
+                    
                     if (_currentTransmission.Count != 0)
                     {
+                        x = 0;
                         _currentTransmission.RemoveAt(0);
                     }
                 }
@@ -123,14 +128,16 @@ namespace ApexLumia
                 else if (_nextTransmission.Count != 0)
                 {
                     // There is no current transmission, but there is data waiting to be transmitted.
-                    _currentTransmission = _nextTransmission;
+                    _currentTransmission = new List<bool>(_nextTransmission);
                     _nextTransmission.Clear();
                     _amplitude = lowVolume;
+                    x = 0;
 
                 }else{
                     // There is no data to transmit at all. Shame. Real Shame.
                     _amplitude = lowVolume;
                 }
+
 
                 _FloatBuffer[i] = _amplitude * Math.Sin(Math.PI * _Phase * 2.0d);
                 _Phase += _timechange;
@@ -180,18 +187,6 @@ namespace ApexLumia
             return result;
         }
 
-        private void shiftToVolumes(){
-
-            // Need the NTX2 graph to properly do this...
-            // May do it eventually.
-
-            if (_shift == 425)
-            {
-                lowVolume = 0.5;
-                _amplitude = lowVolume;
-                highVolume = 0.7;
-            }
-        }
 
 
     }
