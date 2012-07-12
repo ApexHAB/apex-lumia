@@ -21,7 +21,7 @@ namespace ApexLumia
 
         public Pushpin mapLocation = new Pushpin();
 
-        RTTY rtty;
+
         // Constructor
         public MainPage()
         {
@@ -30,12 +30,9 @@ namespace ApexLumia
             // Set context for binded controls to this class.
             DataContext = this;
             dataCount = "0000";
-            rtty = new RTTY();
-            
-            rtty.Start();
-            
-        }
 
+
+        }
 
     }
 
