@@ -49,7 +49,7 @@ namespace ApexLumia
         /// <param name="low">The amplitude for a 'low' bit. 0.0->1.0</param>
         /// <param name="high">The amplitude for a 'high' bit. 0.0->1.0</param>
         /// <param name="stopbits">The number of stop bits for each byte.</param>
-        public RTTY(double frequency = 1000, int samplerate = 42000, int baud = 300, int shift = 425, double low = 0.4, double high = 0.7, int stopbits = 2)
+        public RTTY(double frequency = 3000, int samplerate = 42000, int baud = 300, int shift = 425, double low = 0.4, double high = 0.7, int stopbits = 2)
         {
             _sampleRate = samplerate;
             _frequency = frequency;
