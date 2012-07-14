@@ -27,10 +27,10 @@ namespace ApexLumia
             {
                 // There is a camera. Which I already know. But useful if I decide to use this in any other apps.
                 cam = new Microsoft.Devices.PhotoCamera(CameraType.Primary);
-                cam.Initialized += new EventHandler<Microsoft.Devices.CameraOperationCompletedEventArgs>(camInitialized);
+                //cam.Initialized += new EventHandler<Microsoft.Devices.CameraOperationCompletedEventArgs>(camInitialized);
                 cam.CaptureCompleted += new EventHandler<CameraOperationCompletedEventArgs>(camCaptureCompleted);
-                cam.CaptureImageAvailable += new EventHandler<Microsoft.Devices.ContentReadyEventArgs>(camCaptureImageAvailable);
-                cam.CaptureThumbnailAvailable += new EventHandler<ContentReadyEventArgs>(camCaptureThumbnailAvailable);
+                //cam.CaptureImageAvailable += new EventHandler<Microsoft.Devices.ContentReadyEventArgs>(camCaptureImageAvailable);
+                //cam.CaptureThumbnailAvailable += new EventHandler<ContentReadyEventArgs>(camCaptureThumbnailAvailable);
                 
             }
         }

@@ -37,6 +37,7 @@
                     <HyperlinkButton Name="mnuMedia" Content="media" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
                     <HyperlinkButton Name="mnuData" Content="data" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
                     <HyperlinkButton Name="mnuSettings" Content="settings" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light" NavigateUri="/SettingsPage.xaml" />
+                    <Button Content="Button" Height="200" Name="button1" Width="323" Click="button1_Click" />
                     <toolkit:ToggleSwitch Header="flight running" Height="111" Name="toggleSwitch1" Width="410" Margin="0,100,0,0"/>
                 </StackPanel>
             </controls:PanoramaItem>

@@ -49,7 +49,7 @@ namespace ApexLumia
         /// <param name="low">The amplitude for a 'low' bit. 0.0->1.0</param>
         /// <param name="high">The amplitude for a 'high' bit. 0.0->1.0</param>
         /// <param name="stopbits">The number of stop bits for each byte.</param>
-        public RTTY(double frequency = 3000, int samplerate = 42000, int baud = 300, int shift = 425, double low = 0.4, double high = 0.7, int stopbits = 2)
+        public RTTY(double frequency = 3000, int samplerate = 42000, int baud = 300, int shift = 425, double low = 0.1, double high = 1.0, int stopbits = 2)
         {
             _sampleRate = samplerate;
             _frequency = frequency;
@@ -62,12 +62,15 @@ namespace ApexLumia
 
                      
             _BufferLength = (int)((1d/(double)_baudrate) * 11d * (double)_sampleRate * 2d);
-            _BitLength = _BufferLength / 11;
+            _BitLength = _BufferLength / 11 /2;
+            System.Diagnostics.Debug.WriteLine(_BitLength);
             _FloatBuffer = new double[_BufferLength];
             _ByteBuffer = new byte[_BufferLength * 2];
 
             _dynamicSound = new DynamicSoundEffectInstance(_sampleRate, AudioChannels.Mono);
             _dynamicSound.BufferNeeded += BufferNeeded;
+            _dynamicSound.Volume = 1.0f;
+            SoundEffect.MasterVolume = 1.0f;
 
         }
 
@@ -104,6 +107,7 @@ namespace ApexLumia
 
             sentence = sentence + "\n";
             _nextTransmission = convertToBits(sentence);
+
             return true;
            
         }
@@ -156,6 +160,7 @@ namespace ApexLumia
 
 
                 _FloatBuffer[i] = _amplitude * Math.Sin(Math.PI * _Phase * 2.0d);
+                //System.Diagnostics.Debug.WriteLine(_FloatBuffer[i]);
                 _Phase += _timechange;
                 
             }
@@ -179,18 +184,22 @@ namespace ApexLumia
 
             byte[] theBytes = UTF8Encoding.UTF8.GetBytes(toConvert);
             var result = new List<bool>();
-            
+            result.Add(true);
+            result.Add(true);
+            result.Add(true);
+
             foreach (byte b in theBytes)
             {
                 byte c = b;
 
                 // Start bit
-                result.Add(false); 
+                result.Add(false);
+                System.Diagnostics.Debug.WriteLine("Start bit 0");
 
                 // Byte bits
                 for (int i = 0; i < 8; i++)
                 {
-                    if ((c & 1) == 1) { result.Add(true); } else { result.Add(false); }
+                    if ((c & 1) == 1) { result.Add(true); System.Diagnostics.Debug.WriteLine("bit 1"); } else { result.Add(false); System.Diagnostics.Debug.WriteLine("bit 0"); }
                     c = (byte)(c >> 1);
                 }
 
@@ -198,8 +207,22 @@ namespace ApexLumia
                 for (int i = 0; i < _stopBits; i++)
                 {
                     result.Add(true);
+                    System.Diagnostics.Debug.WriteLine("Stop bit 1");
                 }
             }
+            /*
+            foreach (bool bit in result)
+            {
+                if (bit)
+                {
+                    System.Diagnostics.Debug.WriteLine("1");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("0");
+                }
+            }*/
+
             return result;
         }
 
