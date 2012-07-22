@@ -118,7 +118,7 @@ namespace ApexLumia
         void BufferNeeded(object sender, EventArgs e)
         {
             // Update the buffer in a different thread
-            ThreadPool.QueueUserWorkItem(updateBuffer);
+            updateBuffer("");
         }
 
         /// <summary>
@@ -156,6 +156,7 @@ namespace ApexLumia
                 }else{
                     // There is no data to transmit at all. Shame. Real Shame.
                     _amplitude = lowVolume;
+                    x = 0;
                 }
 
 

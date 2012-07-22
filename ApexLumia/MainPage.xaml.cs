@@ -40,7 +40,7 @@ namespace ApexLumia
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            rtty.transmitSentence("U");
+            rtty.transmitSentence("$$HELLO WORLD! HOW ARE YOU?");
         }
 
     }
