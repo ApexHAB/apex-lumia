@@ -8,6 +8,22 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.IO.IsolatedStorage;
 using Microsoft.Xna.Framework.Media;
+using System.Windows.Media;
+using Microsoft.Phone.Controls;
+using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Controls.Maps;
 
 namespace ApexLumia
 {
@@ -20,16 +36,22 @@ namespace ApexLumia
         bool _isRunning = false;
         public bool isRunning { get { return _isRunning; } }
 
-        string photoname;
+        int photoname;
 
-        public Camera()
+        VideoBrush videobrush;
+
+        public Camera(VideoBrush video, int photocount)
         {
+            
+
             if (PhotoCamera.IsCameraTypeSupported(CameraType.Primary) == true)
             {
                 // There is a camera. Which I already know. But useful if I decide to use this in any other apps.
-                cam = new Microsoft.Devices.PhotoCamera(CameraType.Primary);
 
-                
+                cam = new Microsoft.Devices.PhotoCamera(CameraType.Primary);
+                photoname = photocount;
+                videobrush = video;
+
             }
         }
 
@@ -39,6 +61,10 @@ namespace ApexLumia
             cam.CaptureCompleted += new EventHandler<CameraOperationCompletedEventArgs>(camCaptureCompleted);
             cam.CaptureImageAvailable += new EventHandler<Microsoft.Devices.ContentReadyEventArgs>(camCaptureImageAvailable);
             cam.CaptureThumbnailAvailable += new EventHandler<ContentReadyEventArgs>(camCaptureThumbnailAvailable);
+            cam.AutoFocusCompleted += new EventHandler<CameraOperationCompletedEventArgs>(camAutoFocusCompleted);
+            videobrush.SetSource(cam);
+            videobrush.RelativeTransform = new CompositeTransform() { CenterX = 0.5, CenterY = 0.5, Rotation = 90 };
+
         }
 
         public void stop()
@@ -59,30 +85,59 @@ namespace ApexLumia
             }
         }
 
-        void camInitialized(object sender, CameraOperationCompletedEventArgs e)
+        void camInitialized(object sender, Microsoft.Devices.CameraOperationCompletedEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("Initialized");
+            cam.FlashMode = FlashMode.Off;
+            setToLargestRes();
+            
+
             if (e.Succeeded) { _isRunning = true; }
+            
+        }
+
+        private void setToLargestRes()
+        {
+            IEnumerable<Size> resList = cam.AvailableResolutions;
+            int resCount = resList.Count<Size>();
+            cam.Resolution = resList.ElementAt<Size>(resCount - 1);
         }
 
         public bool takePhoto()
         {
+            System.Diagnostics.Debug.WriteLine("takePhoto");
             if (cam == null) { return false; }
             try
             {
-                cam.CaptureImage();
+                cam.FocusAtPoint(0.5,0.5);
             }
             catch
             {
                 // Probably still taking a previous photo.
+                System.Diagnostics.Debug.WriteLine("fail");
                 return false;
             }
 
             return true;
         }
 
+        void camAutoFocusCompleted(object sender, CameraOperationCompletedEventArgs e)
+        {
+            try
+            {
+                cam.CaptureImage();
+                System.Diagnostics.Debug.WriteLine("CaptureImage()");
+            }
+            catch
+            {
+                
+            }
+        }
+
         void camCaptureCompleted(object sender, CameraOperationCompletedEventArgs e)
         {
-            photoname = Utils.uniqueAlphanumericString();
+            photoname++;
+            System.Diagnostics.Debug.WriteLine("CaptureComplete");
         }
 
         void camCaptureImageAvailable(object sender, ContentReadyEventArgs e)
@@ -110,6 +165,7 @@ namespace ApexLumia
                         }
                     }
                 }
+                System.Diagnostics.Debug.WriteLine("Saved");
 
             }
             finally
@@ -145,6 +201,10 @@ namespace ApexLumia
             }
 
         }
+
+
+
+
 
 
     }
