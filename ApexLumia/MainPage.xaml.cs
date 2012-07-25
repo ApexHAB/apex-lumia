@@ -21,7 +21,7 @@ namespace ApexLumia
 
         public Pushpin mapLocation = new Pushpin();
 
-        RTTY rtty;
+        Camera camera;
 
         // Constructor
         public MainPage()
@@ -32,16 +32,23 @@ namespace ApexLumia
             DataContext = this;
             dataCount = "0000";
 
-            rtty = new RTTY(10000);
-            rtty.Start();
 
 
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            camera = new Camera(cameraViewBrush,0);
+            camera.start();
+            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            rtty.transmitSentence("$$HELLO WORLD! HOW ARE YOU?");
+            camera.takePhoto();
         }
+
+
 
     }
 
