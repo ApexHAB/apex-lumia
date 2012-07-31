@@ -22,6 +22,8 @@ namespace ApexLumia
         public Pushpin mapLocation = new Pushpin();
 
         Camera camera;
+        VideoCamera video;
+        SkyDrive skydrive;
 
         // Constructor
         public MainPage()
@@ -38,14 +40,18 @@ namespace ApexLumia
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            camera = new Camera(cameraViewBrush,0);
-            camera.start();
-            
+            //camera = new Camera(cameraViewBrush,0);
+            //camera.start();
+            //video = new VideoCamera(cameraViewBrush, viewfinderRectangle, 0);
+            //video.start();
+
+            skydrive = new SkyDrive();
+
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            camera.takePhoto();
+            skydrive.Login();
         }
 
 

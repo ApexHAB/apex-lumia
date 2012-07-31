@@ -126,7 +126,12 @@
                 <controls:PanoramaItem.Background>
                     <VideoBrush x:Name="cameraViewBrush" />
                 </controls:PanoramaItem.Background>
-
+                <Rectangle 
+            x:Name="viewfinderRectangle"
+            Width="640" 
+            Height="480" 
+            HorizontalAlignment="Left" 
+            Canvas.Left="80"/>
             </controls:PanoramaItem>
 
             <!--Panorama item two-->
