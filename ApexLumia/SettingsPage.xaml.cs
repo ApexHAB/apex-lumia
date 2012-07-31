@@ -11,6 +11,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Windows.Threading;
+using Microsoft.Live;
+using Microsoft.Live.Controls;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace ApexLumia
 {
@@ -18,6 +22,8 @@ namespace ApexLumia
     {
 
         Settings settings;
+        SkyDrive skydrive = new SkyDrive();
+
 
         public SettingsPage()
         {
@@ -26,6 +32,9 @@ namespace ApexLumia
             settings = new Settings();
             DataContext = settings;
 
+            signInButton.SessionChanged += new EventHandler<LiveConnectSessionChangedEventArgs>(skydrive.LoginCompleted);
+            skydrive.dataFullName = skydrivename;
+            skydrive.dataPhoto = skydrivephoto;
         }
 
         private void btnRestoreDefaults_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -33,6 +42,14 @@ namespace ApexLumia
             settings.SetDefaultSettings();
             MessageBox.Show("Default Settings Restored.");
         }
+
+
+
+
+
+        
+
+
 
     }
 }

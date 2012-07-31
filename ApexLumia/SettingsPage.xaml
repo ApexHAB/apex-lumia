@@ -7,7 +7,8 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:compMod="clr-namespace:System.ComponentModel;assembly=System.Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:live="clr-namespace:Microsoft.Live.Controls;assembly=Microsoft.Live.Controls" 
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     
     
@@ -87,6 +88,16 @@
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
+            </controls:PivotItem>
+            
+            <controls:PivotItem Header="skydrive">
+                <StackPanel>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" d:LayoutOverrides="Height">
+                        <Image Name="skydrivephoto" Source="{Binding ProfileImage}" Height="50" Width="50" Margin="10,0,10,0" />
+                        <TextBlock Name="skydrivename" Text="{Binding FullName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Height="60" Width="227"/>
+                        <live:SignInButton Name="signInButton" ClientId="000000004C0C610D" Scopes="wl.basic wl.photos wl.skydrive wl.offline_access wl.signin wl.skydrive_update" Branding="Skydrive" TextType="Custom" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" SignInText="login" SignOutText="logout" FontSize="20" HorizontalAlignment="Right" Padding="0,3" />
+                    </StackPanel>
+                </StackPanel>
             </controls:PivotItem>
 
         </controls:Pivot>
