@@ -15,10 +15,8 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Maps;
 
 namespace ApexLumia
@@ -60,7 +58,7 @@ namespace ApexLumia
             cam.AutoFocusCompleted += new EventHandler<CameraOperationCompletedEventArgs>(camAutoFocusCompleted);
             videobrush.SetSource(cam);
             videobrush.RelativeTransform = new CompositeTransform() { CenterX = 0.5, CenterY = 0.5, Rotation = 90 };
-
+            _isRunning = true;
         }
 
         public void stop()
@@ -85,11 +83,7 @@ namespace ApexLumia
         {
             System.Diagnostics.Debug.WriteLine("Initialized");
             cam.FlashMode = FlashMode.Off;
-            setToLargestRes();
-            
-
-            if (e.Succeeded) { _isRunning = true; }
-            
+            setToLargestRes();        
         }
 
         private void setToLargestRes()
@@ -145,6 +139,7 @@ namespace ApexLumia
             {
                 // Add to phone's media library camera roll.
                 library.SavePictureToCameraRoll(photo, e.ImageStream);
+                
                 e.ImageStream.Seek(0, SeekOrigin.Begin);
 
                 // Save as JPEG to IsolatedStorage
