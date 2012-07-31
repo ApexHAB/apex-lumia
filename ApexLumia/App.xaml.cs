@@ -12,11 +12,31 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Live;
+using Microsoft.Live.Controls;
 
 namespace ApexLumia
 {
     public partial class App : Application
     {
+
+        private static LiveConnectSession session = null;
+
+        /// <summary>
+        /// A static ViewModel used by the views to bind against.
+        /// </summary>
+        /// <returns>The MainViewModel object.</returns>
+        public static LiveConnectSession Session
+        {
+            get
+            {
+                return session;
+            }
+            set
+            {
+                session = value;
+            }
+        }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.

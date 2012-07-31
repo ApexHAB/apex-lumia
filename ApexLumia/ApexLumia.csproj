@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Camera.cs" />
+    <Compile Include="SkyDrive.cs" />
     <Compile Include="DispatcherService.cs" />
     <Compile Include="RTTY.cs" />
     <Compile Include="Utils.cs" />
@@ -95,7 +96,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VideoCamera.cs" />
+    <Compile Include="videoCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
