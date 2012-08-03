@@ -90,5 +90,25 @@ namespace ApexLumia
             }
         }
 
+        public void uploadFile(string filename, System.IO.Stream file, string skydrivePath = "folder.559920a76be10760.559920A76BE10760!162")
+        {
+            LiveConnectClient client = new LiveConnectClient(App.Session);
+            client.UploadAsync(skydrivePath, filename, file);
+            client.UploadCompleted += new EventHandler<LiveOperationCompletedEventArgs>(UploadCompleted); 
+
+        }
+
+        void UploadCompleted(object sender, LiveOperationCompletedEventArgs args)
+        {
+            if (args.Error == null)
+            {
+                // File uploaded.
+            }
+            else
+            {
+                // There was an error uploading... should probably log this.
+            }
+        }
+
     }
 }
