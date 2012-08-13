@@ -78,6 +78,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Camera.cs" />
+    <Compile Include="FlightLoop.cs" />
+    <Compile Include="Sentence.cs" />
     <Compile Include="SkyDrive.cs" />
     <Compile Include="DispatcherService.cs" />
     <Compile Include="RTTY.cs" />
