@@ -34,6 +34,8 @@ namespace ApexLumia
 
         VideoBrush videobrush;
 
+        public List<string> takenPhotos = new List<string>();
+
         public Camera(VideoBrush video, int photocount)
         {
             
@@ -183,6 +185,8 @@ namespace ApexLumia
                         {
                             targetStream.Write(readBuffer, 0, bytesRead);
                         }
+
+                        takenPhotos.Add(targetStream.Name);
                     }
                 }
             }
