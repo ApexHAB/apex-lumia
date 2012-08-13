@@ -39,15 +39,23 @@ namespace ApexLumia
         /// Async: Post a new tweet to the previously defined twitter account.
         /// </summary>
         /// <param name="tweet">The tweet to post. Max. 140 chars</param>
-        public async void newStatusAsync(string tweet)
+        /// <param name="latitude">Optional: latitude for geotagging</param>
+        /// <param name="longitude">Optional: longitude for geotagging</param>
+        public async void newStatusAsync(string tweet, string latitude = "", string longitude = "")
         {
             string url = "https://api.twitter.com/1/statuses/update.json";
 
             var parameters = new Dictionary<string, string>();
             parameters.Add("status",Utils.UrlEncodeRelaxed(tweet));
+            parameters.Add("display_coordinates", "true");
+            if (latitude != "") { parameters.Add("lat", Utils.UrlEncodeRelaxed(latitude)); }
+            if (longitude != "") { parameters.Add("long", Utils.UrlEncodeRelaxed(longitude)); }
 
             string authorization = generateAuthorizationHeader(url, "POST", parameters);
             string content = string.Format("status={0}",Utils.UrlEncodeRelaxed(tweet));
+            content += string.Format("&display_coordinates={0}", "true");
+            if (latitude != "") { content += string.Format("&lat={0}", Utils.UrlEncodeRelaxed(latitude)); }
+            if (longitude != "") { content += string.Format("&long={0}", Utils.UrlEncodeRelaxed(longitude)); }
 
             string result = await HTTPRequests.postRequestAsync(url, content, authorization);
             if (result == "") { _status = false; } else { _status = true; }
