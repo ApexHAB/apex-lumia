@@ -34,6 +34,10 @@ namespace ApexLumia
             DataContext = this;
             dataCount = "0000";
 
+            Crc16Ccitt crc = new Crc16Ccitt();
+            ushort result = crc.ComputeChecksum(System.Text.UTF8Encoding.UTF8.GetBytes("habitat"));
+            string result2 = result.ToString("X");
+            System.Diagnostics.Debug.WriteLine(result2);
 
 
         }
@@ -44,15 +48,8 @@ namespace ApexLumia
             //camera.start();
             //video = new VideoCamera(cameraViewBrush, viewfinderRectangle, 0);
             //video.start();
-
-            skydrive = new SkyDrive();
-
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            skydrive.Login();
-        }
 
 
 
