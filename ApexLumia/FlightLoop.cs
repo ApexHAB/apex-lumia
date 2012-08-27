@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Threading;
+using System.IO.IsolatedStorage;
 
 namespace ApexLumia
 {
@@ -36,6 +37,9 @@ namespace ApexLumia
         private void loop()
         {
 
+            //Get settings
+            IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
+
             // Start location class
             var location = new Location();
             location.start();
@@ -48,6 +52,9 @@ namespace ApexLumia
                 /////////////////////////////////////
 
                 // Collect Data into Sentence object
+
+                var sentence = new Sentence((string)settings["sentenceCallsign"], (int)settings["sentenceID"], location.latitude, location.longitude, location.altitude);
+                sentence.sentenceData.Add(location.speed);
 
                 // Construct sentence, checksum etc.
 
