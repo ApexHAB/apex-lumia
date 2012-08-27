@@ -35,10 +35,17 @@ namespace ApexLumia
 
         private void loop()
         {
+
+            // Start location class
+            var location = new Location();
+            location.start();
+
+
             while (_isRunning == true)
             {
-
-                // Main Loop Here. Yay. Whoop. No.
+                /////////////////////////////////////
+                // Main Loop Here. Yay. Whoop. No. //
+                /////////////////////////////////////
 
                 // Collect Data into Sentence object
 
