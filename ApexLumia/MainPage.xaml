@@ -30,16 +30,6 @@
                 </LinearGradientBrush>
             </controls:Panorama.Background>
 
-            <controls:PanoramaItem Header="main menu">
-                <!--Double line list with image placeholder and text wrapping-->
-                <StackPanel Margin="14,0,0,0">
-                    <HyperlinkButton Name="mnuFlightDocs" Content="flight docs" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"  />
-                    <HyperlinkButton Name="mnuMedia" Content="media" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
-                    <HyperlinkButton Name="mnuData" Content="data" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light"/>
-                    <HyperlinkButton Name="mnuSettings" Content="settings" FontSize="35" Margin="0,0,0,10" FontFamily="Segoe WP Light" NavigateUri="/SettingsPage.xaml" />
-                    <toolkit:ToggleSwitch Header="flight running" Height="111" Name="toggleSwitch1" Width="410" Margin="0,100,0,0"/>
-                </StackPanel>
-            </controls:PanoramaItem>
 
             <!--Panorama item one-->
             <controls:PanoramaItem Header="flight status">
@@ -73,43 +63,34 @@
                     </Grid.RowDefinitions>
 
 
-                    <TextBlock Text="Count" Grid.Row="0" Grid.Column="0" FontFamily="Segoe WP Semibold" />
-                    <TextBlock Text="{Binding dataCount}" Grid.Row="0" Grid.Column="1"/>
+                    <TextBlock Text="ID" Grid.Row="0" Grid.Column="0" FontFamily="Segoe WP Semibold" TextAlignment="Right" />
+                    <TextBlock Text="{Binding dataSentenceID}" Grid.Row="0" Grid.Column="1"/>
 
-                    <TextBlock Text="Time" Grid.Row="1" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataTime}" Grid.Row="1" Grid.Column="1"/>
-                    <TextBlock Text="Battery" Grid.Row="1" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataBattery}" Grid.Row="1" Grid.Column="3"/>
-                    
-                    <TextBlock Text="Latitude" Grid.Row="2" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataLat}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <TextBlock Text="Longitude" Grid.Row="2" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataLong}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"/>
-                    
-                    <TextBlock Text="Altitude" Grid.Row="4" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataAltitude}" Grid.Row="4" Grid.Column="1"/>
-                    <TextBlock Text="Heading" Grid.Row="4" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataHeading}" Grid.Row="4" Grid.Column="3"/>
-                    <TextBlock Text="Satellites" Grid.Row="5" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataGPSSats}" Grid.Row="5" Grid.Column="1"/>
-                    <TextBlock Text="Speed" Grid.Row="5" Grid.Column="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding dataSpeed}" Grid.Row="5" Grid.Column="3"/>
-                    
-                    <TextBlock Text="Status" Grid.Row="7" Grid.Column="0" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding flightStatus}" Grid.Row="7" Grid.Column="1"/>
+                    <TextBlock Text="Time" Grid.Row="0" Grid.Column="2" FontFamily="Segoe WP Semibold" TextAlignment="Right"/>
+                    <TextBlock Text="{Binding dataTime}" Grid.Row="0" Grid.Column="3"/>
 
-                    <TextBlock Text="Transmitting..."  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding statusTransmit}" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Right"/>
-                    <TextBlock Text="Data connection..." Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding statusDataConnection}" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Right"/>
-                    <TextBlock Text="Updating Habitat..." Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding statusHabitat}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Right"/>
-                    <TextBlock Text="Updating Twitter..." Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding statusTwitter}" Grid.Row="12" Grid.Column="3" HorizontalAlignment="Right"/>
-                    <TextBlock Text="Logging data..." Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding statusLogger}" Grid.Row="13" Grid.Column="3" HorizontalAlignment="Right"/>
-                    <TextBlock Text="Taking photos..." Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
-                    <TextBlock Text="{Binding statusCamera}" Grid.Row="14" Grid.Column="3" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Latitude" Grid.Row="2" Grid.Column="0" FontFamily="Segoe WP Semibold" TextAlignment="Right"/>
+                    <TextBlock Text="{Binding dataLat}" Grid.Row="2" Grid.Column="1"/>
+                    <TextBlock Text="Longitude" Grid.Row="2" Grid.Column="2" FontFamily="Segoe WP Semibold" TextAlignment="Right"/>
+                    <TextBlock Text="{Binding dataLong}" Grid.Row="2" Grid.Column="3"/>
+
+                    <TextBlock Text="Altitude" Grid.Row="3" Grid.Column="0" FontFamily="Segoe WP Semibold" TextAlignment="Right"/>
+                    <TextBlock Text="{Binding dataAltitude}" Grid.Row="3" Grid.Column="1"/>
+                    <TextBlock Text="Speed" Grid.Row="3" Grid.Column="2" FontFamily="Segoe WP Semibold" TextAlignment="Right"/>
+                    <TextBlock Text="{Binding dataSpeed}" Grid.Row="3" Grid.Column="3"/>
+                    
+                    <TextBlock Text="Transmitting..."  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusTransmit}" Grid.Row="6" Grid.Column="3" />
+                    <TextBlock Text="Data connection..." Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusDataConnection}" Grid.Row="7" Grid.Column="3" />
+                    <TextBlock Text="Updating Habitat..." Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusHabitat}" Grid.Row="8" Grid.Column="3" />
+                    <TextBlock Text="Updating Twitter..." Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusTwitter}" Grid.Row="9" Grid.Column="3" />
+                    <TextBlock Text="Logging data..." Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusLogger}" Grid.Row="10" Grid.Column="3" />
+                    <TextBlock Text="Taking photos..." Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Segoe WP Semibold"/>
+                    <TextBlock Text="{Binding statusCamera}" Grid.Row="11" Grid.Column="3" />
                 </Grid>
                 
             </controls:PanoramaItem>
@@ -173,15 +154,9 @@
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" BackgroundColor="White" ForegroundColor="#FF01101A" Mode="Minimized">
-            <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar.transport.play.rest.png" Text="Start Flight"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar.stop.rest.png" Text="Stop Flight" IsEnabled="False" />-->
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="reset packet count"/>
-                <shell:ApplicationBarMenuItem Text="reset spacenear.us"/>
-                <shell:ApplicationBarMenuItem Text="refresh GPS"/>
-                <shell:ApplicationBarMenuItem Text="about"/>
-            </shell:ApplicationBar.MenuItems>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" BackgroundColor="White" ForegroundColor="#FF01101A" Mode="Default">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.transport.play.rest.png" Text="Start Flight" Click="toggleFlight" x:Name="btnToggleFlight" />
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.feature.settings.rest.png" Text="Settings"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

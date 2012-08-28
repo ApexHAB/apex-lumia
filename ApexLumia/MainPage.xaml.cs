@@ -11,10 +11,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Maps;
+using Microsoft.Phone.Shell;
 
 namespace ApexLumia
 {
-    public partial class MainPage : PhoneApplicationPage
+        public partial class MainPage : PhoneApplicationPage
     {
 
         public string dataCount { get; set; }
@@ -22,32 +23,41 @@ namespace ApexLumia
         public Pushpin mapLocation = new Pushpin();
 
         Camera camera;
-        VideoCamera video;
-        SkyDrive skydrive;
-
+        FlightLoop loop = new FlightLoop();
+        
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-
-            // Set context for binded controls to this class.
-            DataContext = this;
-            dataCount = "0000";
-
-            Crc16Ccitt crc = new Crc16Ccitt();
-            ushort result = crc.ComputeChecksum(System.Text.UTF8Encoding.UTF8.GetBytes("habitat"));
-            string result2 = result.ToString("X");
-            System.Diagnostics.Debug.WriteLine(result2);
-
+            DataContext = loop;
 
         }
 
+
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            //camera = new Camera(cameraViewBrush,0);
-            //camera.start();
-            //video = new VideoCamera(cameraViewBrush, viewfinderRectangle, 0);
-            //video.start();
+            camera = new Camera(cameraViewBrush,0);
+            camera.start();
+        }
+
+        private void toggleFlight(object sender, EventArgs e)
+        {
+            ApplicationBarIconButton btn = (ApplicationBarIconButton)ApplicationBar.Buttons[0];
+
+            if (loop.isRunning)
+            {
+                // Then we want to stop it
+                loop.stop();
+                btn.Text = "Start Flight";
+                btn.IconUri = new Uri("/Images/appbar.transport.play.rest.png", UriKind.Relative);
+            }
+            else
+            {
+                // Then we want to start it
+                loop.start(camera);
+                btn.Text = "Stop Flight";
+                btn.IconUri = new Uri("/Images/appbar.stop.rest.png",UriKind.Relative);
+            }
         }
 
 
