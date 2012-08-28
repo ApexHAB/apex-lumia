@@ -68,7 +68,7 @@ namespace ApexLumia
         /// <param name="method">The method of the request.</param>
         /// <param name="otherparams">Any other parameters specific to the request.</param>
         /// <returns></returns>
-        public string generateAuthorizationHeader(string url, string method, Dictionary<string, string> otherparams)
+        private string generateAuthorizationHeader(string url, string method, Dictionary<string, string> otherparams)
         {
 
             var parameters = new Dictionary<string, string>();
