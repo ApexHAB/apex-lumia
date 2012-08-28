@@ -128,9 +128,6 @@
     <Resource Include="Images\appbaricons\appbar.edit.rest.png" />
     <Resource Include="Images\appbaricons\appbar.favs.addto.rest.png" />
     <Resource Include="Images\appbaricons\appbar.favs.rest.png" />
-    <Resource Include="Images\appbaricons\appbar.feature.settings.rest.png" />
-    <Resource Include="Images\appbaricons\appbar.stop.rest.png" />
-    <Resource Include="Images\appbaricons\appbar.transport.play.rest.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ApplicationIcon.png" />
@@ -138,6 +135,9 @@
     <Resource Include="Images\StartTile.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\appbar.feature.settings.rest.png" />
+    <Content Include="Images\appbar.stop.rest.png" />
+    <Content Include="Images\appbar.transport.play.rest.png" />
     <Content Include="Libraries\Newtonsoft.Json.dll" />
     <Content Include="Libraries\Newtonsoft.Json.pdb" />
     <Content Include="Libraries\Newtonsoft.Json.xml" />
