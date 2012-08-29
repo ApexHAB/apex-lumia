@@ -45,8 +45,15 @@ namespace ApexLumia
             settingsGeneral.Add(new SettingsItems("generalProjectName", "project name", "ApexHAB")); // 0
 
             settingsSentence.Add(new SettingsItems("sentenceCallsign", "callsign", "LUMIA")); // 0
+            settingsSentence.Add(new SettingsItems("sentenceID", "current sentence id", 0)); // 0
 
             settingsRTTY.Add(new SettingsItems("rttyRTTYToggle", "rtty transmission", true)); // 0
+            settingsRTTY.Add(new SettingsItems("rttySineFreq", "sine wave frequency", (double)3000)); // 0
+            settingsRTTY.Add(new SettingsItems("rttySampleRate", "sample rate", (int)42000)); // 0
+            settingsRTTY.Add(new SettingsItems("rttyBaud", "baud rate", (int)300));
+            settingsRTTY.Add(new SettingsItems("rttyStopBits", "stop bits", (int)2));// 0
+            settingsRTTY.Add(new SettingsItems("rttyLow", "low bit volume", (double)0.1));
+            settingsRTTY.Add(new SettingsItems("rttyHigh", "high bit volume", (double)1.0));
 
             settingsHabitat.Add(new SettingsItems("habitatHabitatToggle", "habitat upload", true)); // 0
             settingsHabitat.Add(new SettingsItems("habitatCouchURL", "couch url", "http://habitat.habhub.org")); // 1
@@ -55,8 +62,14 @@ namespace ApexLumia
             settingsLogging.Add(new SettingsItems("generalDataLogToggle", "data logger", true)); // 0
 
             settingsCamera.Add(new SettingsItems("generalCameraToggle", "camera", true)); // 0
+            settingsCamera.Add(new SettingsItems("cameraInterval", "photo interval (secs)", 10)); // 0
 
-            settingsTwitter.Add(new SettingsItems("generalTwitterToggle", "twitter update", true)); // 0
+            settingsTwitter.Add(new SettingsItems("twitterTwitterToggle", "twitter update", true)); // 0
+            settingsTwitter.Add(new SettingsItems("twitterUsername", "twitter username", "apexlumia"));
+            settingsTwitter.Add(new SettingsItems("twitterConsumerKey", "consumer key", ""));
+            settingsTwitter.Add(new SettingsItems("twitterConsumerSecret", "consumer secret", ""));
+            settingsTwitter.Add(new SettingsItems("twitterAccessToken", "access token", ""));
+            settingsTwitter.Add(new SettingsItems("twitterAccessSecret", "access secret", ""));
 
         }
 
