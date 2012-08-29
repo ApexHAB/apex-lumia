@@ -30,6 +30,8 @@ namespace ApexLumia
         public string statusLogger { get; set; }
         public string statusCamera { get; set; }
 
+        System.Windows.Threading.DispatcherTimer cameraTimer;
+        IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
 
         public void start(Camera _camera)
         {
@@ -41,25 +43,34 @@ namespace ApexLumia
 
             _isRunning = true;
             loopThread.Start();
+
+            // Start camera on a timer
+            
+            cameraTimer = new System.Windows.Threading.DispatcherTimer();
+            if ((bool)settings["generalCameraToggle"])
+            {
+                cameraTimer.Interval = new TimeSpan(0, 0, (int)settings["cameraInterval"]);
+                cameraTimer.Tick += new EventHandler(cameraTimer_Tick);
+                cameraTimer.Start();
+            }
+
         }
 
         public void stop()
         {
             _isRunning = false;
+            if ((bool)settings["generalCameraToggle"]) { cameraTimer.Stop(); }
         }
 
         private void loop()
         {
-
-            //Get settings
-            IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
 
             // Start location class
             var location = new Location();
             location.start();
 
             // Start RTTY Audio
-            var rtty = new RTTY(); // Defaults are fine
+            var rtty = new RTTY((double)settings["rttySineFreq"], (int)settings["rttySampleRate"], (int)settings["rttyBaud"], 0, (double)settings["rttyLow"],(double)settings["rttyHigh"],(int)settings["rttyStopBits"]); // Defaults are fine
             if ((bool)settings["rttyRTTYToggle"]) { rtty.Start(); rtty.transmitSentence("Tranmission started!"); }
 
             // Start habitat & couch
@@ -68,13 +79,6 @@ namespace ApexLumia
             // Start Twitter
             var twitter = new Twitter((string)settings["twitterUsername"], (string)settings["twitterConsumerKey"], (string)settings["twitterConsumerSecret"], (string)settings["twitterAccessToken"], (string)settings["twitterAccessSecret"]);
 
-            // Start camera on a timer
-            System.Windows.Threading.DispatcherTimer cameraTimer = new System.Windows.Threading.DispatcherTimer();
-            if((bool)settings["generalCameraToggle"]){
-                cameraTimer.Interval = new TimeSpan(0, 0, (int)settings["cameraInterval"]); 
-                cameraTimer.Tick += new EventHandler(cameraTimer_Tick);
-                cameraTimer.Start();
-            }
 
             if (settings.Contains("sentenceID"))
             {
@@ -168,12 +172,12 @@ namespace ApexLumia
                 // Upload photos to SkyDrive
 
                 // Probably wait a bit
-
+                Thread.Sleep(2000);
 
             }
 
             // End & Close stuff, possibly not necessary
-            if ((bool)settings["generalCameraToggle"]) { cameraTimer.Stop(); }
+            
             location.stop();
             rtty.Stop();
 
@@ -193,7 +197,10 @@ namespace ApexLumia
         {
             if (PropertyChanged != null)
             {
+                System.Windows.Deployment.Current.Dispatcher.BeginInvoke(()=>
+                { 
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                });
             }
         }
 
