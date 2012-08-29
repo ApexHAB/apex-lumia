@@ -60,6 +60,12 @@ namespace ApexLumia
             }
         }
 
+        private void gotoSettings(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
+        }
+        
+
 
 
 

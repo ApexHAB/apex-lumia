@@ -156,7 +156,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" BackgroundColor="White" ForegroundColor="#FF01101A" Mode="Default">
             <shell:ApplicationBarIconButton IconUri="/Images/appbar.transport.play.rest.png" Text="Start Flight" Click="toggleFlight" x:Name="btnToggleFlight" />
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar.feature.settings.rest.png" Text="Settings"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.feature.settings.rest.png" Text="Settings" Click="gotoSettings" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
