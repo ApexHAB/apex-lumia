@@ -105,7 +105,7 @@ namespace ApexLumia
         {
             if (_isRunning == false) { return false; }
 
-            sentence = sentence + "\n";
+            sentence = "$$$$$" + sentence + "\n";
             _nextTransmission = convertToBits(sentence);
 
             return true;
