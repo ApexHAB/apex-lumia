@@ -23,7 +23,7 @@ namespace ApexLumia
         public string altitude;
        
         // Optional Data goes in List
-        public List<string> sentenceData;
+        public List<string> sentenceData = new List<string>();
 
         private string _wholeSentence = "";
         public string wholeSentence { get { return _wholeSentence; } }
@@ -57,7 +57,7 @@ namespace ApexLumia
             string checksum = crc.ComputeChecksum(System.Text.UTF8Encoding.UTF8.GetBytes(_sentence)).ToString("X");
 
             // $$$$$$CALLSIGN,SENTENCE_ID,TIME,LATITUDE,LONGITUDE,ALTITUDE,[CUSTOM, DATA, ..., ...]*XXXX
-            if (checksum.Length == 4) { _wholeSentence = "$$$$$$" + _sentence + "*" + checksum; } else { return false; }
+            if (checksum.Length == 4) { _wholeSentence = "$$" + _sentence + "*" + checksum; } else { return false; }
 
             return true;
 
