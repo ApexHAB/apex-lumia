@@ -100,6 +100,8 @@ namespace ApexLumia
             // This MAY sometimes exhibit RFC 3986 behavior (according to the documentation).
             // If it does, the escaping we do that follows it will be a no-op since the
             // characters we search for to replace can't possibly exist in the string.
+            if (value == "" || value == null) { return ""; }
+
             StringBuilder escaped = new StringBuilder(Uri.EscapeDataString(value));
 
             // Upgrade the escaping to RFC 3986, if necessary.

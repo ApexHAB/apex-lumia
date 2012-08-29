@@ -190,6 +190,10 @@ namespace ApexLumia
                     }
                 }
             }
+            catch
+            {
+                // Error, shame.
+            }
             finally
             {
                 e.ImageStream.Close();
