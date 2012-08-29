@@ -49,7 +49,7 @@ namespace ApexLumia
             // about ensuring the system knows we 'received' it too.
 
             string type = "payload_telemetry";
-            string _raw = Utils.base64ify(fullsentence);
+            string _raw = Utils.base64ify(fullsentence + "\n");
             string id = Utils.sha256ify(_raw);
             int timecreated = Utils.unix_timestamp();
             int timeuploaded = Utils.unix_timestamp();
