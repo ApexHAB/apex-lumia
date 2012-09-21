@@ -3,6 +3,7 @@ using System.Threading;
 using System.IO.IsolatedStorage;
 using System.Net.NetworkInformation;
 using System.ComponentModel;
+using Microsoft.Phone.Controls.Maps;
 
 namespace ApexLumia
 {
@@ -13,6 +14,7 @@ namespace ApexLumia
         public bool isRunning { get { return _isRunning; } }
 
         Camera camera;
+        Map themap;
 
         int sentenceID;
 
@@ -33,23 +35,23 @@ namespace ApexLumia
         System.Windows.Threading.DispatcherTimer cameraTimer;
         IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
 
-        public void start(Camera _camera)
+        public void start(Camera _camera, Map _map)
         {
             Thread loopThread = new Thread(new ThreadStart(this.loop));
             loopThread.IsBackground = true;
             loopThread.Name = "Flight Loop";
 
             camera = _camera;
+            themap = _map;
 
             _isRunning = true;
             loopThread.Start();
 
             // Start camera on a timer
-            
             cameraTimer = new System.Windows.Threading.DispatcherTimer();
             if ((bool)settings["generalCameraToggle"])
             {
-                cameraTimer.Interval = new TimeSpan(0, 0, (int)settings["cameraInterval"]);
+                cameraTimer.Interval = new TimeSpan(0, 0, Convert.ToInt32(settings["cameraInterval"]));
                 cameraTimer.Tick += new EventHandler(cameraTimer_Tick);
                 cameraTimer.Start();
             }
@@ -82,7 +84,7 @@ namespace ApexLumia
 
             if (settings.Contains("sentenceID"))
             {
-                sentenceID = (int)settings["sentenceID"];
+                sentenceID = Convert.ToInt32(settings["sentenceID"]);
             }
             else
             {
@@ -90,6 +92,8 @@ namespace ApexLumia
             }
 
             OnPropertyChanged("dataSentenceID");
+
+            int tweeti = 0;
 
             while (_isRunning == true)
             {
@@ -121,6 +125,14 @@ namespace ApexLumia
                 OnPropertyChanged("dataSpeed");
                 dataTime = System.DateTime.Now.ToString("HH:mm:ss");
                 OnPropertyChanged("dataTime");
+
+                if (location.status)
+                {
+                    System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                        updateMap(location.currentlocation);
+                    });
+                }
 
                 // Construct sentence
                 if(sentence.compileSentence()){
@@ -157,17 +169,21 @@ namespace ApexLumia
                 // Twitter, if internet
                 if (hasNetworkConnection && (bool)settings["twitterTwitterToggle"])
                 {
-                    string tweet = "I'm at " + location.latitude + ", " + location.longitude + " at an altitude of " + location.altitude + "m #apexhab #ukhas";
-                    twitter.newStatusAsync(tweet, location.latitude, location.longitude);
-                    statusTwitter = twitter.status.ToString();
-                    OnPropertyChanged("statusTwitter");
+                    if (tweeti >= Convert.ToInt32(settings["twitterInterval"]))
+                    {
+                        string tweet = "I'm at " + location.latitude + ", " + location.longitude + " at an altitude of " + location.altitude + "m #apexhab #ukhas";
+                        twitter.newStatusAsync(tweet, location.latitude, location.longitude);
+                        statusTwitter = twitter.status.ToString();
+                        OnPropertyChanged("statusTwitter");
+                        tweeti = 0;
+                    }
                 }
                 else
                 {
                     statusTwitter = "False";
                     OnPropertyChanged("statusTwitter");
                 }
-
+                tweeti++;
 
                 // Upload photos to SkyDrive
 
@@ -188,6 +204,13 @@ namespace ApexLumia
             if (camera.isRunning) { camera.takePhoto(); statusCamera = "True"; OnPropertyChanged("statusCamera"); } else { statusCamera = "False"; OnPropertyChanged("statusCamera"); }
         }
 
+        void updateMap(System.Device.Location.GeoCoordinate location)
+        {
+            Pushpin pin = new Pushpin();
+            pin.Location = location;
+            themap.Children.Add(pin);
+            themap.SetView(location,16.0);
+        }
 
         #region INotifyPropertyChanged Members
 

@@ -54,7 +54,7 @@ namespace ApexLumia
             else
             {
                 // Then we want to start it
-                loop.start(camera);
+                loop.start(camera, map);
                 btn.Text = "Stop Flight";
                 btn.IconUri = new Uri("/Images/appbar.stop.rest.png",UriKind.Relative);
             }
