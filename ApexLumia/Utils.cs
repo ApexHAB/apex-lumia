@@ -3,7 +3,7 @@ using System.Net;
 using System.Windows;
 using System.Security.Cryptography;
 using System.Text;
-
+using System.Xml;
 
 namespace ApexLumia
 {
@@ -58,6 +58,11 @@ namespace ApexLumia
         {
             TimeSpan unix_time = (System.DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
             return (int)unix_time.TotalSeconds;
+        }
+
+        static public string rfc3339()
+        {
+            return XmlConvert.ToString(System.DateTime.UtcNow, XmlDateTimeSerializationMode.Utc);
         }
 
         static public string uniqueAlphanumericString()
