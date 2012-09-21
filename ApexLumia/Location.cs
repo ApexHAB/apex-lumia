@@ -105,13 +105,16 @@ namespace ApexLumia
 
             if (e.Position.Location.IsUnknown) { _status = false; return; }
 
-            _latitude = e.Position.Location.Latitude.ToString("0.000000");
-            _longitude = e.Position.Location.Longitude.ToString("0.000000");
-            _speed = e.Position.Location.Speed.ToString("0.0");
-            _heading = e.Position.Location.Course.ToString("0.0");
+            _latitude = e.Position.Location.Latitude.ToString("0.0000");
+            _longitude = e.Position.Location.Longitude.ToString("0.0000");
+            _speed = e.Position.Location.Speed.ToString();
+            if (_speed == "NaN") { _speed = "0.0"; }
+            _heading = e.Position.Location.Course.ToString();
+            if (_heading == "NaN") { _heading = "0.0"; }
             _altitude = e.Position.Location.Altitude.ToString("0.0");
-            _horizontalaccuracy = e.Position.Location.HorizontalAccuracy.ToString("0.0");
-            _verticalaccuracy = e.Position.Location.VerticalAccuracy.ToString("0.0");
+            if (_altitude == "NaN") { _altitude = "0.0"; }
+            _horizontalaccuracy = e.Position.Location.HorizontalAccuracy.ToString();
+            _verticalaccuracy = e.Position.Location.VerticalAccuracy.ToString();
             _currentlocation = e.Position.Location;
             _status = true;
 
