@@ -66,11 +66,12 @@ namespace ApexLumia
 
             settingsTwitter.Add(new SettingsItems("twitterTwitterToggle", "twitter update", true)); // 0
             settingsTwitter.Add(new SettingsItems("twitterUsername", "twitter username", "apexlumia"));
+            
             settingsTwitter.Add(new SettingsItems("twitterConsumerKey", "consumer key", ""));
             settingsTwitter.Add(new SettingsItems("twitterConsumerSecret", "consumer secret", ""));
             settingsTwitter.Add(new SettingsItems("twitterAccessToken", "access token", ""));
             settingsTwitter.Add(new SettingsItems("twitterAccessSecret", "access secret", ""));
-
+            settingsTwitter.Add(new SettingsItems("twitterInterval", "interval", 90));
         }
 
         /// <summary>

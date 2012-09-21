@@ -25,13 +25,22 @@
         <!--Pivot Control-->
         <controls:Pivot Title="SETTINGS">
             
-            <controls:PivotItem Header="general">
+            <controls:PivotItem Header="sentence">
                 <ScrollViewer>
                     <StackPanel>
-                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsGeneral[0]}">
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsSentence[0]}" HorizontalAlignment="Left">
                             <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
                             <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                             <TextBox Height="71" Name="tbProjectName" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsSentence[1]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Name="tbSentenceID" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200">
+                                <TextBox.InputScope>
+                                    <InputScope />
+                                </TextBox.InputScope>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Margin="0,0,0,17" >
                             <Button Content="Restore Default Settings" Height="71" Name="btnRestoreDefaults" Width="460" Tap="btnRestoreDefaults_Tap" />
@@ -46,6 +55,36 @@
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsRTTY[0]}">
                             <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch1" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsRTTY[1]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsRTTY[2]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsRTTY[3]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsRTTY[4]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsRTTY[5]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsRTTY[6]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
+                        </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </controls:PivotItem>
@@ -55,6 +94,16 @@
                     <StackPanel>
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsHabitat[0]}">
                             <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch2" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsHabitat[1]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsHabitat[2]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -66,6 +115,11 @@
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsCamera[0]}">
                             <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch3" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsCamera[1]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
+                        </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </controls:PivotItem>
@@ -76,19 +130,40 @@
                         <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsTwitter[0]}">
                             <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch4" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
                         </StackPanel>
-                    </StackPanel>
-                </ScrollViewer>
-            </controls:PivotItem>
-
-            <controls:PivotItem Header="logging">
-                <ScrollViewer>
-                    <StackPanel>
-                        <StackPanel Margin="0,0,0,0" DataContext="{Binding settingsLogging[0]}">
-                            <toolkit:ToggleSwitch Header="{Binding settingName}" Height="111" Name="toggleSwitch5" Width="456" IsChecked="{Binding Path=settingValue, Mode=TwoWay}" />
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsTwitter[1]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsTwitter[2]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsTwitter[3]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsTwitter[4]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsTwitter[5]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="460" />
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" DataContext="{Binding settingsTwitter[6]}" HorizontalAlignment="Left">
+                            <TextBlock Text="" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                            <TextBlock Text="{Binding settingName}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBox Height="71" Text="{Binding Path=settingValue, Mode=TwoWay}" Width="200" />
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </controls:PivotItem>
+
             
             <controls:PivotItem Header="skydrive">
                 <StackPanel>
