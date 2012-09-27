@@ -4,8 +4,8 @@ Apex Lumia
 Payload consisting of a Nokia Lumia 800 and NTX2 10mW transmitter.
 
 ## ToDo
-*Finish SkyDrive auto-upload.
-*Add logging of errors and data.
+* Finish SkyDrive auto-upload.
+* Add logging of errors and data.
 
 ## Essay
 
