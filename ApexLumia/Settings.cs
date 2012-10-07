@@ -48,7 +48,7 @@ namespace ApexLumia
             settingsSentence.Add(new SettingsItems("sentenceID", "current sentence id", 0)); // 0
 
             settingsRTTY.Add(new SettingsItems("rttyRTTYToggle", "rtty transmission", true)); // 0
-            settingsRTTY.Add(new SettingsItems("rttySineFreq", "sine wave frequency", (double)3000)); // 0
+            settingsRTTY.Add(new SettingsItems("rttySineFreq", "sine wave frequency", (double)10000)); // 0
             settingsRTTY.Add(new SettingsItems("rttySampleRate", "sample rate", (int)42000)); // 0
             settingsRTTY.Add(new SettingsItems("rttyBaud", "baud rate", (int)300));
             settingsRTTY.Add(new SettingsItems("rttyStopBits", "stop bits", (int)2));// 0
