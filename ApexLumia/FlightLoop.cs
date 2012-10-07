@@ -72,7 +72,7 @@ namespace ApexLumia
             location.start();
 
             // Start RTTY Audio
-            var rtty = new RTTY((double)settings["rttySineFreq"], (int)settings["rttySampleRate"], (int)settings["rttyBaud"], 0, (double)settings["rttyLow"],(double)settings["rttyHigh"],(int)settings["rttyStopBits"]); // Defaults are fine
+            var rtty = new RTTY(Convert.ToDouble(settings["rttySineFreq"]), Convert.ToInt32(settings["rttySampleRate"]), Convert.ToInt32(settings["rttyBaud"]), 0, Convert.ToDouble(settings["rttyLow"]), Convert.ToDouble(settings["rttyHigh"]), Convert.ToInt32(settings["rttyStopBits"])); // Defaults are fine
             if ((bool)settings["rttyRTTYToggle"]) { rtty.Start(); rtty.transmitSentence("Tranmission started!"); }
 
             // Start habitat & couch
