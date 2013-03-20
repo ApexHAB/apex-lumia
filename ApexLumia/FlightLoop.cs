@@ -67,6 +67,9 @@ namespace ApexLumia
         private void loop()
         {
 
+            // Logging
+            var logging = new Logging();
+
             // Start location class
             var location = new Location();
             location.start();
@@ -138,6 +141,7 @@ namespace ApexLumia
                 if(sentence.compileSentence()){
 
                     // Log sentence & data
+                    sentence.logSentence();
 
                     // Upload to habitat, if internet
                     if (hasNetworkConnection && (bool)settings["habitatHabitatToggle"])

@@ -67,7 +67,8 @@ namespace ApexLumia
         {
             if (_wholeSentence.Length > 0)
             {
-                // Log the sentence...
+                var logging = new Logging();
+                logging.log("sentences", _wholeSentence);
             }
         }
 
