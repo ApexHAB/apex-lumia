@@ -93,7 +93,7 @@ namespace ApexLumia
         public void uploadFile(string filename, System.IO.Stream file, string skydrivePath = "folder.559920a76be10760.559920A76BE10760!162")
         {
             LiveConnectClient client = new LiveConnectClient(App.Session);
-            client.UploadAsync(skydrivePath, filename, file);
+            client.UploadAsync(skydrivePath, filename, file, OverwriteOption.Overwrite);
             client.UploadCompleted += new EventHandler<LiveOperationCompletedEventArgs>(UploadCompleted); 
 
         }
