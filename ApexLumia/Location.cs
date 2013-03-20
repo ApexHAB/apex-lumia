@@ -107,9 +107,9 @@ namespace ApexLumia
 
             _latitude = e.Position.Location.Latitude.ToString("0.0000");
             _longitude = e.Position.Location.Longitude.ToString("0.0000");
-            _speed = e.Position.Location.Speed.ToString();
+            _speed = e.Position.Location.Speed.ToString("0.0");
             if (_speed == "NaN") { _speed = "0.0"; }
-            _heading = e.Position.Location.Course.ToString();
+            _heading = e.Position.Location.Course.ToString("0.0");
             if (_heading == "NaN") { _heading = "0.0"; }
             _altitude = e.Position.Location.Altitude.ToString("0.0");
             if (_altitude == "NaN") { _altitude = "0.0"; }
