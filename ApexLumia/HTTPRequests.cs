@@ -47,7 +47,7 @@ namespace ApexLumia
                 request.Headers[HttpRequestHeader.ContentLength] = putbytes.Length.ToString();
 
                 Stream putStream = await request.GetRequestStreamAsync();
-                putStream.Write(putbytes, 0, putbytes.Length);
+                await putStream.WriteAsync(putbytes, 0, putbytes.Length);
                 putStream.Close();
 
                 WebResponse response = await request.GetResponseAsync();
@@ -75,11 +75,11 @@ namespace ApexLumia
                 request.Headers[HttpRequestHeader.Authorization] = authorization;
 
                 Stream postStream = await request.GetRequestStreamAsync();
-                postStream.Write(postbytes, 0, postbytes.Length);
+                await postStream.WriteAsync(postbytes, 0, postbytes.Length);
                 postStream.Close();
 
                 WebResponse response = await request.GetResponseAsync();
-                result = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                result = await new StreamReader(response.GetResponseStream()).ReadToEndAsync();
 
             }
             catch { return ""; }
